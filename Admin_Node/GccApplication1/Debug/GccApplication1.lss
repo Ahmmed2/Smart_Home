@@ -1,0 +1,2981 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000fd4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000001ee  00800060  00000fd4  00001068  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000028  0080024e  0080024e  00001256  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001256  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001288  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000002c8  00000000  00000000  000012c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00003e02  00000000  00000000  0000158c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000ff5  00000000  00000000  0000538e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001ae4  00000000  00000000  00006383  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000714  00000000  00000000  00007e68  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000ea2  00000000  00000000  0000857c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001f7d  00000000  00000000  0000941e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000260  00000000  00000000  0000b39b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 ab 06 	jmp	0xd56	; 0xd56 <__vector_12>
+  34:	0c 94 9a 07 	jmp	0xf34	; 0xf34 <__vector_13>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 c1 07 	jmp	0xf82	; 0xf82 <__vector_15>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	12 e0       	ldi	r17, 0x02	; 2
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 ed       	ldi	r30, 0xD4	; 212
+  68:	ff e0       	ldi	r31, 0x0F	; 15
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ae 34       	cpi	r26, 0x4E	; 78
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	22 e0       	ldi	r18, 0x02	; 2
+  78:	ae e4       	ldi	r26, 0x4E	; 78
+  7a:	b2 e0       	ldi	r27, 0x02	; 2
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a6 37       	cpi	r26, 0x76	; 118
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 71 05 	call	0xae2	; 0xae2 <main>
+  8a:	0c 94 e8 07 	jmp	0xfd0	; 0xfd0 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <EEPROM_voidInit>:
+	_delay_ms(8) ;
+	
+
+	return Local_u8RxValue ;
+	
+}
+  92:	8f ef       	ldi	r24, 0xFF	; 255
+  94:	0e 94 d2 06 	call	0xda4	; 0xda4 <TWI_voidInitMaster>
+  98:	08 95       	ret
+
+0000009a <EEPROM_voidWritePage>:
+
+
+void EEPROM_voidWritePage(u16 Copy_u16WordAddress , u8 Copy_u8Data[],u8 Copy_u8Size)
+{
+  9a:	ff 92       	push	r15
+  9c:	0f 93       	push	r16
+  9e:	1f 93       	push	r17
+  a0:	cf 93       	push	r28
+  a2:	df 93       	push	r29
+  a4:	c8 2f       	mov	r28, r24
+  a6:	8b 01       	movw	r16, r22
+  a8:	d4 2f       	mov	r29, r20
+	// Hex 50 ---> 0b01010000  , MSB is don't Care
+	u8 Local_u8Temp = (EEPROM_CHIP_ADDRESS) | (Copy_u16WordAddress>>8) ;
+  aa:	90 65       	ori	r25, 0x50	; 80
+  ac:	f9 2e       	mov	r15, r25
+	/* Frame Sequence */
+	// Send Start Condition
+	TWI_voidStartCondition () ;
+  ae:	0e 94 e5 06 	call	0xdca	; 0xdca <TWI_voidStartCondition>
+	// Send Slave Address
+	TWI_voidSendSlaveAdressWithWrite(Local_u8Temp) ;
+  b2:	8f 2d       	mov	r24, r15
+  b4:	0e 94 08 07 	call	0xe10	; 0xe10 <TWI_voidSendSlaveAdressWithWrite>
+	// Send Word Address
+	TWI_voidSendMasterDataByte((u8)Copy_u16WordAddress) ;
+  b8:	8c 2f       	mov	r24, r28
+  ba:	0e 94 32 07 	call	0xe64	; 0xe64 <TWI_voidSendMasterDataByte>
+	
+	for (u8 Local_u8LoopCounter = 0 ;Local_u8LoopCounter<Copy_u8Size ;Local_u8LoopCounter++ )
+  be:	c0 e0       	ldi	r28, 0x00	; 0
+  c0:	07 c0       	rjmp	.+14     	; 0xd0 <EEPROM_voidWritePage+0x36>
+	{
+		
+		// Send Byte Data
+		TWI_voidSendMasterDataByte(Copy_u8Data[Local_u8LoopCounter]) ;
+  c2:	f8 01       	movw	r30, r16
+  c4:	ec 0f       	add	r30, r28
+  c6:	f1 1d       	adc	r31, r1
+  c8:	80 81       	ld	r24, Z
+  ca:	0e 94 32 07 	call	0xe64	; 0xe64 <TWI_voidSendMasterDataByte>
+	// Send Slave Address
+	TWI_voidSendSlaveAdressWithWrite(Local_u8Temp) ;
+	// Send Word Address
+	TWI_voidSendMasterDataByte((u8)Copy_u16WordAddress) ;
+	
+	for (u8 Local_u8LoopCounter = 0 ;Local_u8LoopCounter<Copy_u8Size ;Local_u8LoopCounter++ )
+  ce:	cf 5f       	subi	r28, 0xFF	; 255
+  d0:	cd 17       	cp	r28, r29
+  d2:	b8 f3       	brcs	.-18     	; 0xc2 <EEPROM_voidWritePage+0x28>
+		TWI_voidSendMasterDataByte(Copy_u8Data[Local_u8LoopCounter]) ;
+		
+	}
+
+	// Send Stop Condition
+	TWI_voidStopCondition() ;
+  d4:	0e 94 01 07 	call	0xe02	; 0xe02 <TWI_voidStopCondition>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  d8:	80 e4       	ldi	r24, 0x40	; 64
+  da:	9c e9       	ldi	r25, 0x9C	; 156
+  dc:	01 97       	sbiw	r24, 0x01	; 1
+  de:	f1 f7       	brne	.-4      	; 0xdc <EEPROM_voidWritePage+0x42>
+	_delay_ms(10) ;
+	
+	
+
+	
+}
+  e0:	df 91       	pop	r29
+  e2:	cf 91       	pop	r28
+  e4:	1f 91       	pop	r17
+  e6:	0f 91       	pop	r16
+  e8:	ff 90       	pop	r15
+  ea:	08 95       	ret
+
+000000ec <EEPROM_voidReadPage>:
+
+void EEPROM_voidReadPage(u16 Copy_u16WordAddress , u8 Copy_u8Data[],u8 Copy_u8Size)
+{
+  ec:	ef 92       	push	r14
+  ee:	ff 92       	push	r15
+  f0:	0f 93       	push	r16
+  f2:	1f 93       	push	r17
+  f4:	cf 93       	push	r28
+  f6:	df 93       	push	r29
+  f8:	f8 2e       	mov	r15, r24
+  fa:	8b 01       	movw	r16, r22
+  fc:	d4 2f       	mov	r29, r20
+		// Hex 50 ---> 0b01010000  , MSB is don't Care
+		u8 Local_u8Temp = (EEPROM_CHIP_ADDRESS) | (Copy_u16WordAddress>>8) ;
+  fe:	c9 2f       	mov	r28, r25
+ 100:	c0 65       	ori	r28, 0x50	; 80
+		/* Frame Sequence */
+		// Send Start Condition
+		TWI_voidStartCondition () ;
+ 102:	0e 94 e5 06 	call	0xdca	; 0xdca <TWI_voidStartCondition>
+		// Send Slave Address with Read
+		TWI_voidSendSlaveAdressWithWrite(Local_u8Temp) ;
+ 106:	8c 2f       	mov	r24, r28
+ 108:	0e 94 08 07 	call	0xe10	; 0xe10 <TWI_voidSendSlaveAdressWithWrite>
+		// Send Word Address
+		TWI_voidSendMasterDataByte((u8)Copy_u16WordAddress) ;
+ 10c:	8f 2d       	mov	r24, r15
+ 10e:	0e 94 32 07 	call	0xe64	; 0xe64 <TWI_voidSendMasterDataByte>
+		//Repeated Start
+		TWI_voidRepeatedStartCondition() ;
+ 112:	0e 94 f3 06 	call	0xde6	; 0xde6 <TWI_voidRepeatedStartCondition>
+		//Send Slave Address with read
+		TWI_voidSendSlaveAdressWithRead(Local_u8Temp) ;
+ 116:	8c 2f       	mov	r24, r28
+ 118:	0e 94 1d 07 	call	0xe3a	; 0xe3a <TWI_voidSendSlaveAdressWithRead>
+		
+	for (u8 Local_u8LoopCounter = 0 ;Local_u8LoopCounter<Copy_u8Size ;Local_u8LoopCounter++ )
+ 11c:	c0 e0       	ldi	r28, 0x00	; 0
+ 11e:	12 c0       	rjmp	.+36     	; 0x144 <EEPROM_voidReadPage+0x58>
+	{
+		if (Local_u8LoopCounter == Copy_u8Size-1 )
+ 120:	2c 2f       	mov	r18, r28
+ 122:	30 e0       	ldi	r19, 0x00	; 0
+ 124:	8d 2f       	mov	r24, r29
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	01 97       	sbiw	r24, 0x01	; 1
+ 12a:	28 17       	cp	r18, r24
+ 12c:	39 07       	cpc	r19, r25
+ 12e:	11 f4       	brne	.+4      	; 0x134 <EEPROM_voidReadPage+0x48>
+		{
+			TWI_voidReadNONACK() ;
+ 130:	0e 94 4a 07 	call	0xe94	; 0xe94 <TWI_voidReadNONACK>
+		}
+		//Receive Data
+		Copy_u8Data[Local_u8LoopCounter] = TWI_voidReceiveMasterDataByte () ;
+ 134:	78 01       	movw	r14, r16
+ 136:	ec 0e       	add	r14, r28
+ 138:	f1 1c       	adc	r15, r1
+ 13a:	0e 94 3e 07 	call	0xe7c	; 0xe7c <TWI_voidReceiveMasterDataByte>
+ 13e:	f7 01       	movw	r30, r14
+ 140:	80 83       	st	Z, r24
+		//Repeated Start
+		TWI_voidRepeatedStartCondition() ;
+		//Send Slave Address with read
+		TWI_voidSendSlaveAdressWithRead(Local_u8Temp) ;
+		
+	for (u8 Local_u8LoopCounter = 0 ;Local_u8LoopCounter<Copy_u8Size ;Local_u8LoopCounter++ )
+ 142:	cf 5f       	subi	r28, 0xFF	; 255
+ 144:	cd 17       	cp	r28, r29
+ 146:	60 f3       	brcs	.-40     	; 0x120 <EEPROM_voidReadPage+0x34>
+ 148:	c0 e4       	ldi	r28, 0x40	; 64
+ 14a:	dc e9       	ldi	r29, 0x9C	; 156
+ 14c:	ce 01       	movw	r24, r28
+ 14e:	01 97       	sbiw	r24, 0x01	; 1
+ 150:	f1 f7       	brne	.-4      	; 0x14e <EEPROM_voidReadPage+0x62>
+		Copy_u8Data[Local_u8LoopCounter] = TWI_voidReceiveMasterDataByte () ;
+	}
+		_delay_ms(10);
+	
+		//Send Stop Condition
+		TWI_voidStopCondition() ;
+ 152:	0e 94 01 07 	call	0xe02	; 0xe02 <TWI_voidStopCondition>
+ 156:	21 97       	sbiw	r28, 0x01	; 1
+ 158:	f1 f7       	brne	.-4      	; 0x156 <EEPROM_voidReadPage+0x6a>
+		/* Self Time Delay */
+		_delay_ms(10) ;
+		
+		TWI_voidReadACK() ;
+ 15a:	0e 94 46 07 	call	0xe8c	; 0xe8c <TWI_voidReadACK>
+	
+}
+ 15e:	df 91       	pop	r29
+ 160:	cf 91       	pop	r28
+ 162:	1f 91       	pop	r17
+ 164:	0f 91       	pop	r16
+ 166:	ff 90       	pop	r15
+ 168:	ef 90       	pop	r14
+ 16a:	08 95       	ret
+
+0000016c <EEPROM_u8Search>:
+
+
+u8 EEPROM_u8Search (u8 Copy_u8Pass[] , u8 Copy_u8UsersNum)
+{
+ 16c:	ef 92       	push	r14
+ 16e:	ff 92       	push	r15
+ 170:	0f 93       	push	r16
+ 172:	1f 93       	push	r17
+ 174:	cf 93       	push	r28
+ 176:	df 93       	push	r29
+ 178:	00 d0       	rcall	.+0      	; 0x17a <EEPROM_u8Search+0xe>
+ 17a:	00 d0       	rcall	.+0      	; 0x17c <EEPROM_u8Search+0x10>
+ 17c:	cd b7       	in	r28, 0x3d	; 61
+ 17e:	de b7       	in	r29, 0x3e	; 62
+ 180:	8c 01       	movw	r16, r24
+ 182:	e6 2e       	mov	r14, r22
+	
+	u8 Local_u8Counter1, Local_u8Counter2 , Local_u8ReturnValue ;
+	u8 Local_u8CompareFlag = 0 ;
+ 184:	30 e0       	ldi	r19, 0x00	; 0
+	u8 EEPROM_Pass[4] ;
+	
+
+	for (Local_u8Counter1 = 0 ; Local_u8Counter1 < Copy_u8UsersNum ; Local_u8Counter1++ )
+ 186:	f1 2c       	mov	r15, r1
+ 188:	25 c0       	rjmp	.+74     	; 0x1d4 <EEPROM_u8Search+0x68>
+	{
+		Local_u8CompareFlag = 0 ;
+		EEPROM_voidReadPage ( ((0x0000 + Local_u8Counter1*4)) , EEPROM_Pass ,3 ) ;
+ 18a:	8f 2d       	mov	r24, r15
+ 18c:	90 e0       	ldi	r25, 0x00	; 0
+ 18e:	43 e0       	ldi	r20, 0x03	; 3
+ 190:	be 01       	movw	r22, r28
+ 192:	6f 5f       	subi	r22, 0xFF	; 255
+ 194:	7f 4f       	sbci	r23, 0xFF	; 255
+ 196:	88 0f       	add	r24, r24
+ 198:	99 1f       	adc	r25, r25
+ 19a:	88 0f       	add	r24, r24
+ 19c:	99 1f       	adc	r25, r25
+ 19e:	0e 94 76 00 	call	0xec	; 0xec <EEPROM_voidReadPage>
+	u8 EEPROM_Pass[4] ;
+	
+
+	for (Local_u8Counter1 = 0 ; Local_u8Counter1 < Copy_u8UsersNum ; Local_u8Counter1++ )
+	{
+		Local_u8CompareFlag = 0 ;
+ 1a2:	30 e0       	ldi	r19, 0x00	; 0
+		EEPROM_voidReadPage ( ((0x0000 + Local_u8Counter1*4)) , EEPROM_Pass ,3 ) ;
+		for (Local_u8Counter2 = 0 ; Local_u8Counter2 < 3 ; Local_u8Counter2 ++)
+ 1a4:	20 e0       	ldi	r18, 0x00	; 0
+ 1a6:	11 c0       	rjmp	.+34     	; 0x1ca <EEPROM_u8Search+0x5e>
+		{
+			if (Copy_u8Pass[Local_u8Counter2] == EEPROM_Pass [Local_u8Counter2])
+ 1a8:	82 2f       	mov	r24, r18
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	f8 01       	movw	r30, r16
+ 1ae:	e8 0f       	add	r30, r24
+ 1b0:	f9 1f       	adc	r31, r25
+ 1b2:	40 81       	ld	r20, Z
+ 1b4:	e1 e0       	ldi	r30, 0x01	; 1
+ 1b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b8:	ec 0f       	add	r30, r28
+ 1ba:	fd 1f       	adc	r31, r29
+ 1bc:	e8 0f       	add	r30, r24
+ 1be:	f9 1f       	adc	r31, r25
+ 1c0:	80 81       	ld	r24, Z
+ 1c2:	48 13       	cpse	r20, r24
+ 1c4:	04 c0       	rjmp	.+8      	; 0x1ce <EEPROM_u8Search+0x62>
+			{
+				Local_u8CompareFlag ++ ;
+ 1c6:	3f 5f       	subi	r19, 0xFF	; 255
+
+	for (Local_u8Counter1 = 0 ; Local_u8Counter1 < Copy_u8UsersNum ; Local_u8Counter1++ )
+	{
+		Local_u8CompareFlag = 0 ;
+		EEPROM_voidReadPage ( ((0x0000 + Local_u8Counter1*4)) , EEPROM_Pass ,3 ) ;
+		for (Local_u8Counter2 = 0 ; Local_u8Counter2 < 3 ; Local_u8Counter2 ++)
+ 1c8:	2f 5f       	subi	r18, 0xFF	; 255
+ 1ca:	23 30       	cpi	r18, 0x03	; 3
+ 1cc:	68 f3       	brcs	.-38     	; 0x1a8 <EEPROM_u8Search+0x3c>
+			else   break ;
+
+
+			
+		}
+	 if (Local_u8CompareFlag == 3)
+ 1ce:	33 30       	cpi	r19, 0x03	; 3
+ 1d0:	19 f0       	breq	.+6      	; 0x1d8 <EEPROM_u8Search+0x6c>
+	u8 Local_u8Counter1, Local_u8Counter2 , Local_u8ReturnValue ;
+	u8 Local_u8CompareFlag = 0 ;
+	u8 EEPROM_Pass[4] ;
+	
+
+	for (Local_u8Counter1 = 0 ; Local_u8Counter1 < Copy_u8UsersNum ; Local_u8Counter1++ )
+ 1d2:	f3 94       	inc	r15
+ 1d4:	fe 14       	cp	r15, r14
+ 1d6:	c8 f2       	brcs	.-78     	; 0x18a <EEPROM_u8Search+0x1e>
+}		
+
+		
+
+		
+	if (Local_u8CompareFlag == 3)
+ 1d8:	33 30       	cpi	r19, 0x03	; 3
+ 1da:	21 f0       	breq	.+8      	; 0x1e4 <EEPROM_u8Search+0x78>
+	{
+
+		Local_u8ReturnValue = Local_u8Counter1; 
+
+	}
+	else Local_u8ReturnValue = 250 ;
+ 1dc:	0f 2e       	mov	r0, r31
+ 1de:	fa ef       	ldi	r31, 0xFA	; 250
+ 1e0:	ff 2e       	mov	r15, r31
+ 1e2:	f0 2d       	mov	r31, r0
+
+
+	 
+	return Local_u8ReturnValue ;
+	
+}
+ 1e4:	8f 2d       	mov	r24, r15
+ 1e6:	0f 90       	pop	r0
+ 1e8:	0f 90       	pop	r0
+ 1ea:	0f 90       	pop	r0
+ 1ec:	0f 90       	pop	r0
+ 1ee:	df 91       	pop	r29
+ 1f0:	cf 91       	pop	r28
+ 1f2:	1f 91       	pop	r17
+ 1f4:	0f 91       	pop	r16
+ 1f6:	ff 90       	pop	r15
+ 1f8:	ef 90       	pop	r14
+ 1fa:	08 95       	ret
+
+000001fc <EEPROM_voidSendDataPage>:
+
+void EEPROM_voidSendDataPage (u8 Copy_u8Index , u8 Copy_u8Oper[] ) 
+{
+
+	EEPROM_voidWritePage((0X0000+(Copy_u8Index*4)) , Copy_u8Oper,3) ;
+ 1fc:	90 e0       	ldi	r25, 0x00	; 0
+ 1fe:	43 e0       	ldi	r20, 0x03	; 3
+ 200:	88 0f       	add	r24, r24
+ 202:	99 1f       	adc	r25, r25
+ 204:	88 0f       	add	r24, r24
+ 206:	99 1f       	adc	r25, r25
+ 208:	0e 94 4d 00 	call	0x9a	; 0x9a <EEPROM_voidWritePage>
+ 20c:	08 95       	ret
+
+0000020e <Keypad_VidInit>:
+		{'7','8','9','-'},
+		{'=','0','c','/'}
+};
+/*KPD INIT*/
+void Keypad_VidInit(void)
+{
+ 20e:	cf 93       	push	r28
+	/* Set Row Pins as an Input */
+	for (u8 i=0;i<4;i++)
+ 210:	c0 e0       	ldi	r28, 0x00	; 0
+ 212:	09 c0       	rjmp	.+18     	; 0x226 <Keypad_VidInit+0x18>
+	{
+		Dio_voidSetpinchmode(ROW_PIN[i], INPUT);
+ 214:	ec 2f       	mov	r30, r28
+ 216:	f0 e0       	ldi	r31, 0x00	; 0
+ 218:	ec 59       	subi	r30, 0x9C	; 156
+ 21a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 21c:	61 e0       	ldi	r22, 0x01	; 1
+ 21e:	80 81       	ld	r24, Z
+ 220:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+};
+/*KPD INIT*/
+void Keypad_VidInit(void)
+{
+	/* Set Row Pins as an Input */
+	for (u8 i=0;i<4;i++)
+ 224:	cf 5f       	subi	r28, 0xFF	; 255
+ 226:	c4 30       	cpi	r28, 0x04	; 4
+ 228:	a8 f3       	brcs	.-22     	; 0x214 <Keypad_VidInit+0x6>
+ 22a:	c0 e0       	ldi	r28, 0x00	; 0
+ 22c:	09 c0       	rjmp	.+18     	; 0x240 <Keypad_VidInit+0x32>
+		Dio_voidSetpinchmode(ROW_PIN[i], INPUT);
+	}
+	/* Set Column Pins as an Output */
+	for (u8 i=0;i<4;i++)
+	{
+		Dio_voidSetpinchmode(COL_PIN[i],OUTPUT_HIGH);
+ 22e:	ec 2f       	mov	r30, r28
+ 230:	f0 e0       	ldi	r31, 0x00	; 0
+ 232:	e0 5a       	subi	r30, 0xA0	; 160
+ 234:	ff 4f       	sbci	r31, 0xFF	; 255
+ 236:	62 e0       	ldi	r22, 0x02	; 2
+ 238:	80 81       	ld	r24, Z
+ 23a:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	for (u8 i=0;i<4;i++)
+	{
+		Dio_voidSetpinchmode(ROW_PIN[i], INPUT);
+	}
+	/* Set Column Pins as an Output */
+	for (u8 i=0;i<4;i++)
+ 23e:	cf 5f       	subi	r28, 0xFF	; 255
+ 240:	c4 30       	cpi	r28, 0x04	; 4
+ 242:	a8 f3       	brcs	.-22     	; 0x22e <Keypad_VidInit+0x20>
+	{
+		Dio_voidSetpinchmode(COL_PIN[i],OUTPUT_HIGH);
+	}
+	
+}
+ 244:	cf 91       	pop	r28
+ 246:	08 95       	ret
+
+00000248 <Keypad_U8GetKeyPressed>:
+/*KPD Get pressed*/
+u8 Keypad_U8GetKeyPressed(void)
+{
+ 248:	bf 92       	push	r11
+ 24a:	cf 92       	push	r12
+ 24c:	df 92       	push	r13
+ 24e:	ef 92       	push	r14
+ 250:	ff 92       	push	r15
+ 252:	0f 93       	push	r16
+ 254:	1f 93       	push	r17
+ 256:	cf 93       	push	r28
+ 258:	df 93       	push	r29
+ 25a:	1f 92       	push	r1
+ 25c:	cd b7       	in	r28, 0x3d	; 61
+ 25e:	de b7       	in	r29, 0x3e	; 62
+	u8 LOC_U8RowCount;
+	u8 LOC_U8ColCount;
+	/*Initialize the switch status to NOT PRESSED*/
+	u8 LOC_U8ReturnValue=255;
+ 260:	bb 24       	eor	r11, r11
+ 262:	ba 94       	dec	r11
+	u8 LOC_U8PinState;
+	/*Looping on columns of the keypad*/
+	for(LOC_U8ColCount=0;LOC_U8ColCount<4;LOC_U8ColCount++)
+ 264:	e1 2c       	mov	r14, r1
+ 266:	40 c0       	rjmp	.+128    	; 0x2e8 <Keypad_U8GetKeyPressed+0xa0>
+	{
+		/*Active the Column */
+		Dio_voidWritepinchannel(COL_PIN[LOC_U8ColCount],PIN_LOW);
+ 268:	ce 2c       	mov	r12, r14
+ 26a:	d1 2c       	mov	r13, r1
+ 26c:	f6 01       	movw	r30, r12
+ 26e:	e0 5a       	subi	r30, 0xA0	; 160
+ 270:	ff 4f       	sbci	r31, 0xFF	; 255
+ 272:	60 e0       	ldi	r22, 0x00	; 0
+ 274:	80 81       	ld	r24, Z
+ 276:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+		/*Loop to read the all row pins*/
+		for(LOC_U8RowCount=0;LOC_U8RowCount<4;LOC_U8RowCount++)
+ 27a:	f1 2c       	mov	r15, r1
+ 27c:	2a c0       	rjmp	.+84     	; 0x2d2 <Keypad_U8GetKeyPressed+0x8a>
+		{
+			/*check the status of the switch*/
+			Dio_voidReadpinchannel(ROW_PIN[LOC_U8RowCount],&LOC_U8PinState);
+ 27e:	0f 2d       	mov	r16, r15
+ 280:	10 e0       	ldi	r17, 0x00	; 0
+ 282:	f8 01       	movw	r30, r16
+ 284:	ec 59       	subi	r30, 0x9C	; 156
+ 286:	ff 4f       	sbci	r31, 0xFF	; 255
+ 288:	be 01       	movw	r22, r28
+ 28a:	6f 5f       	subi	r22, 0xFF	; 255
+ 28c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 28e:	80 81       	ld	r24, Z
+ 290:	0e 94 71 06 	call	0xce2	; 0xce2 <Dio_voidReadpinchannel>
+			if(LOC_U8PinState==0)
+ 294:	89 81       	ldd	r24, Y+1	; 0x01
+ 296:	81 11       	cpse	r24, r1
+ 298:	1b c0       	rjmp	.+54     	; 0x2d0 <Keypad_U8GetKeyPressed+0x88>
+			{
+				/*Get the Value of the current pressed switch*/
+				LOC_U8ReturnValue=KPD_u8SwitchVal[LOC_U8ColCount][LOC_U8RowCount];
+ 29a:	f6 01       	movw	r30, r12
+ 29c:	ee 0f       	add	r30, r30
+ 29e:	ff 1f       	adc	r31, r31
+ 2a0:	ee 0f       	add	r30, r30
+ 2a2:	ff 1f       	adc	r31, r31
+ 2a4:	e2 5c       	subi	r30, 0xC2	; 194
+ 2a6:	fd 4f       	sbci	r31, 0xFD	; 253
+ 2a8:	e0 0f       	add	r30, r16
+ 2aa:	f1 1f       	adc	r31, r17
+ 2ac:	b0 80       	ld	r11, Z
+				/*wait until the switch is released(Single Press)*/
+				while(LOC_U8PinState==0)
+ 2ae:	09 c0       	rjmp	.+18     	; 0x2c2 <Keypad_U8GetKeyPressed+0x7a>
+				{
+					Dio_voidReadpinchannel(ROW_PIN[LOC_U8RowCount],&LOC_U8PinState);
+ 2b0:	be 01       	movw	r22, r28
+ 2b2:	6f 5f       	subi	r22, 0xFF	; 255
+ 2b4:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2b6:	f8 01       	movw	r30, r16
+ 2b8:	ec 59       	subi	r30, 0x9C	; 156
+ 2ba:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2bc:	80 81       	ld	r24, Z
+ 2be:	0e 94 71 06 	call	0xce2	; 0xce2 <Dio_voidReadpinchannel>
+			if(LOC_U8PinState==0)
+			{
+				/*Get the Value of the current pressed switch*/
+				LOC_U8ReturnValue=KPD_u8SwitchVal[LOC_U8ColCount][LOC_U8RowCount];
+				/*wait until the switch is released(Single Press)*/
+				while(LOC_U8PinState==0)
+ 2c2:	89 81       	ldd	r24, Y+1	; 0x01
+ 2c4:	88 23       	and	r24, r24
+ 2c6:	a1 f3       	breq	.-24     	; 0x2b0 <Keypad_U8GetKeyPressed+0x68>
+ 2c8:	80 ea       	ldi	r24, 0xA0	; 160
+ 2ca:	9f e0       	ldi	r25, 0x0F	; 15
+ 2cc:	01 97       	sbiw	r24, 0x01	; 1
+ 2ce:	f1 f7       	brne	.-4      	; 0x2cc <Keypad_U8GetKeyPressed+0x84>
+	for(LOC_U8ColCount=0;LOC_U8ColCount<4;LOC_U8ColCount++)
+	{
+		/*Active the Column */
+		Dio_voidWritepinchannel(COL_PIN[LOC_U8ColCount],PIN_LOW);
+		/*Loop to read the all row pins*/
+		for(LOC_U8RowCount=0;LOC_U8RowCount<4;LOC_U8RowCount++)
+ 2d0:	f3 94       	inc	r15
+ 2d2:	83 e0       	ldi	r24, 0x03	; 3
+ 2d4:	8f 15       	cp	r24, r15
+ 2d6:	98 f6       	brcc	.-90     	; 0x27e <Keypad_U8GetKeyPressed+0x36>
+			{
+				/*Do Nothing*/
+			}
+		}
+		/*Deactivate the Column*/
+		Dio_voidWritepinchannel(COL_PIN[LOC_U8ColCount],PIN_HIGH);
+ 2d8:	f6 01       	movw	r30, r12
+ 2da:	e0 5a       	subi	r30, 0xA0	; 160
+ 2dc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2de:	61 e0       	ldi	r22, 0x01	; 1
+ 2e0:	80 81       	ld	r24, Z
+ 2e2:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+	u8 LOC_U8ColCount;
+	/*Initialize the switch status to NOT PRESSED*/
+	u8 LOC_U8ReturnValue=255;
+	u8 LOC_U8PinState;
+	/*Looping on columns of the keypad*/
+	for(LOC_U8ColCount=0;LOC_U8ColCount<4;LOC_U8ColCount++)
+ 2e6:	e3 94       	inc	r14
+ 2e8:	83 e0       	ldi	r24, 0x03	; 3
+ 2ea:	8e 15       	cp	r24, r14
+ 2ec:	08 f0       	brcs	.+2      	; 0x2f0 <Keypad_U8GetKeyPressed+0xa8>
+ 2ee:	bc cf       	rjmp	.-136    	; 0x268 <Keypad_U8GetKeyPressed+0x20>
+		}
+		/*Deactivate the Column*/
+		Dio_voidWritepinchannel(COL_PIN[LOC_U8ColCount],PIN_HIGH);
+	}
+	return LOC_U8ReturnValue;
+}
+ 2f0:	8b 2d       	mov	r24, r11
+ 2f2:	0f 90       	pop	r0
+ 2f4:	df 91       	pop	r29
+ 2f6:	cf 91       	pop	r28
+ 2f8:	1f 91       	pop	r17
+ 2fa:	0f 91       	pop	r16
+ 2fc:	ff 90       	pop	r15
+ 2fe:	ef 90       	pop	r14
+ 300:	df 90       	pop	r13
+ 302:	cf 90       	pop	r12
+ 304:	bf 90       	pop	r11
+ 306:	08 95       	ret
+
+00000308 <private_voidWriteHalfPort>:
+ 308:	cf 93       	push	r28
+ 30a:	c8 2f       	mov	r28, r24
+ 30c:	68 2f       	mov	r22, r24
+ 30e:	61 70       	andi	r22, 0x01	; 1
+ 310:	88 e0       	ldi	r24, 0x08	; 8
+ 312:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 316:	c1 fb       	bst	r28, 1
+ 318:	66 27       	eor	r22, r22
+ 31a:	60 f9       	bld	r22, 0
+ 31c:	89 e0       	ldi	r24, 0x09	; 9
+ 31e:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 322:	c2 fb       	bst	r28, 2
+ 324:	66 27       	eor	r22, r22
+ 326:	60 f9       	bld	r22, 0
+ 328:	8a e0       	ldi	r24, 0x0A	; 10
+ 32a:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 32e:	c3 fb       	bst	r28, 3
+ 330:	66 27       	eor	r22, r22
+ 332:	60 f9       	bld	r22, 0
+ 334:	8c e0       	ldi	r24, 0x0C	; 12
+ 336:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 33a:	cf 91       	pop	r28
+ 33c:	08 95       	ret
+
+0000033e <LCD_voidSendCmnd>:
+ 33e:	1f 93       	push	r17
+ 340:	cf 93       	push	r28
+ 342:	df 93       	push	r29
+ 344:	18 2f       	mov	r17, r24
+ 346:	60 e0       	ldi	r22, 0x00	; 0
+ 348:	83 e0       	ldi	r24, 0x03	; 3
+ 34a:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 34e:	81 2f       	mov	r24, r17
+ 350:	82 95       	swap	r24
+ 352:	8f 70       	andi	r24, 0x0F	; 15
+ 354:	0e 94 84 01 	call	0x308	; 0x308 <private_voidWriteHalfPort>
+ 358:	61 e0       	ldi	r22, 0x01	; 1
+ 35a:	82 e0       	ldi	r24, 0x02	; 2
+ 35c:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 360:	c0 ea       	ldi	r28, 0xA0	; 160
+ 362:	df e0       	ldi	r29, 0x0F	; 15
+ 364:	ce 01       	movw	r24, r28
+ 366:	01 97       	sbiw	r24, 0x01	; 1
+ 368:	f1 f7       	brne	.-4      	; 0x366 <LCD_voidSendCmnd+0x28>
+ 36a:	60 e0       	ldi	r22, 0x00	; 0
+ 36c:	82 e0       	ldi	r24, 0x02	; 2
+ 36e:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 372:	ce 01       	movw	r24, r28
+ 374:	01 97       	sbiw	r24, 0x01	; 1
+ 376:	f1 f7       	brne	.-4      	; 0x374 <LCD_voidSendCmnd+0x36>
+ 378:	81 2f       	mov	r24, r17
+ 37a:	0e 94 84 01 	call	0x308	; 0x308 <private_voidWriteHalfPort>
+ 37e:	61 e0       	ldi	r22, 0x01	; 1
+ 380:	82 e0       	ldi	r24, 0x02	; 2
+ 382:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 386:	ce 01       	movw	r24, r28
+ 388:	01 97       	sbiw	r24, 0x01	; 1
+ 38a:	f1 f7       	brne	.-4      	; 0x388 <LCD_voidSendCmnd+0x4a>
+ 38c:	60 e0       	ldi	r22, 0x00	; 0
+ 38e:	82 e0       	ldi	r24, 0x02	; 2
+ 390:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 394:	21 97       	sbiw	r28, 0x01	; 1
+ 396:	f1 f7       	brne	.-4      	; 0x394 <LCD_voidSendCmnd+0x56>
+ 398:	df 91       	pop	r29
+ 39a:	cf 91       	pop	r28
+ 39c:	1f 91       	pop	r17
+ 39e:	08 95       	ret
+
+000003a0 <LCD_voidInit>:
+ 3a0:	cf 93       	push	r28
+ 3a2:	63 e0       	ldi	r22, 0x03	; 3
+ 3a4:	83 e0       	ldi	r24, 0x03	; 3
+ 3a6:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3aa:	63 e0       	ldi	r22, 0x03	; 3
+ 3ac:	82 e0       	ldi	r24, 0x02	; 2
+ 3ae:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3b2:	63 e0       	ldi	r22, 0x03	; 3
+ 3b4:	88 e0       	ldi	r24, 0x08	; 8
+ 3b6:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3ba:	63 e0       	ldi	r22, 0x03	; 3
+ 3bc:	89 e0       	ldi	r24, 0x09	; 9
+ 3be:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3c2:	63 e0       	ldi	r22, 0x03	; 3
+ 3c4:	8a e0       	ldi	r24, 0x0A	; 10
+ 3c6:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3ca:	63 e0       	ldi	r22, 0x03	; 3
+ 3cc:	8c e0       	ldi	r24, 0x0C	; 12
+ 3ce:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+ 3d2:	8e e5       	ldi	r24, 0x5E	; 94
+ 3d4:	91 e0       	ldi	r25, 0x01	; 1
+ 3d6:	05 c0       	rjmp	.+10     	; 0x3e2 <LCD_voidInit+0x42>
+ 3d8:	e0 e9       	ldi	r30, 0x90	; 144
+ 3da:	f1 e0       	ldi	r31, 0x01	; 1
+ 3dc:	31 97       	sbiw	r30, 0x01	; 1
+ 3de:	f1 f7       	brne	.-4      	; 0x3dc <LCD_voidInit+0x3c>
+ 3e0:	01 97       	sbiw	r24, 0x01	; 1
+ 3e2:	00 97       	sbiw	r24, 0x00	; 0
+ 3e4:	c9 f7       	brne	.-14     	; 0x3d8 <LCD_voidInit+0x38>
+ 3e6:	60 e0       	ldi	r22, 0x00	; 0
+ 3e8:	83 e0       	ldi	r24, 0x03	; 3
+ 3ea:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 3ee:	82 e0       	ldi	r24, 0x02	; 2
+ 3f0:	0e 94 84 01 	call	0x308	; 0x308 <private_voidWriteHalfPort>
+ 3f4:	61 e0       	ldi	r22, 0x01	; 1
+ 3f6:	82 e0       	ldi	r24, 0x02	; 2
+ 3f8:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 3fc:	80 ea       	ldi	r24, 0xA0	; 160
+ 3fe:	9f e0       	ldi	r25, 0x0F	; 15
+ 400:	01 97       	sbiw	r24, 0x01	; 1
+ 402:	f1 f7       	brne	.-4      	; 0x400 <__EEPROM_REGION_LENGTH__>
+ 404:	60 e0       	ldi	r22, 0x00	; 0
+ 406:	82 e0       	ldi	r24, 0x02	; 2
+ 408:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 40c:	88 e2       	ldi	r24, 0x28	; 40
+ 40e:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 412:	c0 ef       	ldi	r28, 0xF0	; 240
+ 414:	8c 2f       	mov	r24, r28
+ 416:	8a 95       	dec	r24
+ 418:	f1 f7       	brne	.-4      	; 0x416 <__EEPROM_REGION_LENGTH__+0x16>
+ 41a:	8f e0       	ldi	r24, 0x0F	; 15
+ 41c:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 420:	ca 95       	dec	r28
+ 422:	f1 f7       	brne	.-4      	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+ 424:	81 e0       	ldi	r24, 0x01	; 1
+ 426:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 42a:	80 e4       	ldi	r24, 0x40	; 64
+ 42c:	9f e1       	ldi	r25, 0x1F	; 31
+ 42e:	01 97       	sbiw	r24, 0x01	; 1
+ 430:	f1 f7       	brne	.-4      	; 0x42e <__EEPROM_REGION_LENGTH__+0x2e>
+ 432:	86 e0       	ldi	r24, 0x06	; 6
+ 434:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 438:	cf 91       	pop	r28
+ 43a:	08 95       	ret
+
+0000043c <LCD_voidSendChar>:
+ 43c:	1f 93       	push	r17
+ 43e:	cf 93       	push	r28
+ 440:	df 93       	push	r29
+ 442:	18 2f       	mov	r17, r24
+ 444:	61 e0       	ldi	r22, 0x01	; 1
+ 446:	83 e0       	ldi	r24, 0x03	; 3
+ 448:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 44c:	81 2f       	mov	r24, r17
+ 44e:	82 95       	swap	r24
+ 450:	8f 70       	andi	r24, 0x0F	; 15
+ 452:	0e 94 84 01 	call	0x308	; 0x308 <private_voidWriteHalfPort>
+ 456:	61 e0       	ldi	r22, 0x01	; 1
+ 458:	82 e0       	ldi	r24, 0x02	; 2
+ 45a:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 45e:	c0 ea       	ldi	r28, 0xA0	; 160
+ 460:	df e0       	ldi	r29, 0x0F	; 15
+ 462:	ce 01       	movw	r24, r28
+ 464:	01 97       	sbiw	r24, 0x01	; 1
+ 466:	f1 f7       	brne	.-4      	; 0x464 <LCD_voidSendChar+0x28>
+ 468:	60 e0       	ldi	r22, 0x00	; 0
+ 46a:	82 e0       	ldi	r24, 0x02	; 2
+ 46c:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 470:	ce 01       	movw	r24, r28
+ 472:	01 97       	sbiw	r24, 0x01	; 1
+ 474:	f1 f7       	brne	.-4      	; 0x472 <LCD_voidSendChar+0x36>
+ 476:	81 2f       	mov	r24, r17
+ 478:	0e 94 84 01 	call	0x308	; 0x308 <private_voidWriteHalfPort>
+ 47c:	61 e0       	ldi	r22, 0x01	; 1
+ 47e:	82 e0       	ldi	r24, 0x02	; 2
+ 480:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 484:	ce 01       	movw	r24, r28
+ 486:	01 97       	sbiw	r24, 0x01	; 1
+ 488:	f1 f7       	brne	.-4      	; 0x486 <LCD_voidSendChar+0x4a>
+ 48a:	60 e0       	ldi	r22, 0x00	; 0
+ 48c:	82 e0       	ldi	r24, 0x02	; 2
+ 48e:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+ 492:	21 97       	sbiw	r28, 0x01	; 1
+ 494:	f1 f7       	brne	.-4      	; 0x492 <LCD_voidSendChar+0x56>
+ 496:	df 91       	pop	r29
+ 498:	cf 91       	pop	r28
+ 49a:	1f 91       	pop	r17
+ 49c:	08 95       	ret
+
+0000049e <LCD_voidWriteString>:
+ 49e:	0f 93       	push	r16
+ 4a0:	1f 93       	push	r17
+ 4a2:	cf 93       	push	r28
+ 4a4:	8c 01       	movw	r16, r24
+ 4a6:	c0 e0       	ldi	r28, 0x00	; 0
+ 4a8:	07 c0       	rjmp	.+14     	; 0x4b8 <LCD_voidWriteString+0x1a>
+ 4aa:	0e 94 1e 02 	call	0x43c	; 0x43c <LCD_voidSendChar>
+ 4ae:	80 ea       	ldi	r24, 0xA0	; 160
+ 4b0:	9f e0       	ldi	r25, 0x0F	; 15
+ 4b2:	01 97       	sbiw	r24, 0x01	; 1
+ 4b4:	f1 f7       	brne	.-4      	; 0x4b2 <LCD_voidWriteString+0x14>
+ 4b6:	cf 5f       	subi	r28, 0xFF	; 255
+ 4b8:	f8 01       	movw	r30, r16
+ 4ba:	ec 0f       	add	r30, r28
+ 4bc:	f1 1d       	adc	r31, r1
+ 4be:	80 81       	ld	r24, Z
+ 4c0:	81 11       	cpse	r24, r1
+ 4c2:	f3 cf       	rjmp	.-26     	; 0x4aa <LCD_voidWriteString+0xc>
+ 4c4:	cf 91       	pop	r28
+ 4c6:	1f 91       	pop	r17
+ 4c8:	0f 91       	pop	r16
+ 4ca:	08 95       	ret
+
+000004cc <LCD_voidClear>:
+ 4cc:	81 e0       	ldi	r24, 0x01	; 1
+ 4ce:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 4d2:	08 95       	ret
+
+000004d4 <LCD_voidGoToSpecificPosition>:
+	
+}
+
+void LCD_voidGoToSpecificPosition(u8 copy_u8LineNumber, u8 copy_u8Position)
+{
+	if((copy_u8LineNumber==LCD_LINE_ONE)&&((copy_u8Position>=0)&&(copy_u8Position<16)))
+ 4d4:	81 30       	cpi	r24, 0x01	; 1
+ 4d6:	39 f4       	brne	.+14     	; 0x4e6 <LCD_voidGoToSpecificPosition+0x12>
+ 4d8:	60 31       	cpi	r22, 0x10	; 16
+ 4da:	28 f4       	brcc	.+10     	; 0x4e6 <LCD_voidGoToSpecificPosition+0x12>
+	{
+		
+		LCD_voidSendCmnd((LINE1_OFFSET_ADDRESS+copy_u8Position));
+ 4dc:	80 e8       	ldi	r24, 0x80	; 128
+ 4de:	86 0f       	add	r24, r22
+ 4e0:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 4e4:	08 95       	ret
+	}
+	else if((copy_u8LineNumber==LCD_LINE_TWO)&&((copy_u8Position>=0)&&(copy_u8Position<16)))
+ 4e6:	82 30       	cpi	r24, 0x02	; 2
+ 4e8:	39 f4       	brne	.+14     	; 0x4f8 <LCD_voidGoToSpecificPosition+0x24>
+ 4ea:	60 31       	cpi	r22, 0x10	; 16
+ 4ec:	28 f4       	brcc	.+10     	; 0x4f8 <LCD_voidGoToSpecificPosition+0x24>
+	{
+		
+		LCD_voidSendCmnd((LINE2_OFFSET_ADDRESS+copy_u8Position));
+ 4ee:	80 ec       	ldi	r24, 0xC0	; 192
+ 4f0:	86 0f       	add	r24, r22
+ 4f2:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 4f6:	08 95       	ret
+	}
+	else if((copy_u8LineNumber==LCD_LINE_THREE)&&((copy_u8Position>=0)&&(copy_u8Position<16)))
+ 4f8:	83 30       	cpi	r24, 0x03	; 3
+ 4fa:	39 f4       	brne	.+14     	; 0x50a <LCD_voidGoToSpecificPosition+0x36>
+ 4fc:	60 31       	cpi	r22, 0x10	; 16
+ 4fe:	28 f4       	brcc	.+10     	; 0x50a <LCD_voidGoToSpecificPosition+0x36>
+	{
+		
+		LCD_voidSendCmnd((LINE3_OFFSET_ADDRESS+copy_u8Position));
+ 500:	84 e9       	ldi	r24, 0x94	; 148
+ 502:	86 0f       	add	r24, r22
+ 504:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 508:	08 95       	ret
+	}
+	else if((copy_u8LineNumber==LCD_LINE_FOUR)&&((copy_u8Position>=0)&&(copy_u8Position<16)))
+ 50a:	84 30       	cpi	r24, 0x04	; 4
+ 50c:	31 f4       	brne	.+12     	; 0x51a <LCD_voidGoToSpecificPosition+0x46>
+ 50e:	60 31       	cpi	r22, 0x10	; 16
+ 510:	20 f4       	brcc	.+8      	; 0x51a <LCD_voidGoToSpecificPosition+0x46>
+	{
+		
+		LCD_voidSendCmnd((LINE4_OFFSET_ADDRESS+copy_u8Position));
+ 512:	84 ed       	ldi	r24, 0xD4	; 212
+ 514:	86 0f       	add	r24, r22
+ 516:	0e 94 9f 01 	call	0x33e	; 0x33e <LCD_voidSendCmnd>
+ 51a:	08 95       	ret
+
+0000051c <AddPassword>:
+		
+}
+
+void AddPassword ()
+{
+	UART_VidSendString(LCD_EnterPass);
+ 51c:	81 e6       	ldi	r24, 0x61	; 97
+ 51e:	91 e0       	ldi	r25, 0x01	; 1
+ 520:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+	UART_VidSendChar('\r') ;
+ 524:	8d e0       	ldi	r24, 0x0D	; 13
+ 526:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	/* Adjust Password */
+	UART_IndexRx = UART_VidReceiveString(UART_PassRx) ;
+ 52a:	84 e5       	ldi	r24, 0x54	; 84
+ 52c:	92 e0       	ldi	r25, 0x02	; 2
+ 52e:	0e 94 7d 07 	call	0xefa	; 0xefa <UART_VidReceiveString>
+ 532:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <UART_IndexRx>
+	UART_VidSendChar('\r') ;
+ 536:	8d e0       	ldi	r24, 0x0D	; 13
+ 538:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+ 53c:	08 95       	ret
+
+0000053e <Add_User>:
+}
+
+void Add_User(void)
+{
+
+	AddPassword() ;
+ 53e:	0e 94 8e 02 	call	0x51c	; 0x51c <AddPassword>
+	EEPROM_voidWritePage( (0x0000+(4*Address_Index)) , UART_PassRx,3) ;
+ 542:	80 91 4e 02 	lds	r24, 0x024E	; 0x80024e <__data_end>
+ 546:	90 e0       	ldi	r25, 0x00	; 0
+ 548:	43 e0       	ldi	r20, 0x03	; 3
+ 54a:	64 e5       	ldi	r22, 0x54	; 84
+ 54c:	72 e0       	ldi	r23, 0x02	; 2
+ 54e:	88 0f       	add	r24, r24
+ 550:	99 1f       	adc	r25, r25
+ 552:	88 0f       	add	r24, r24
+ 554:	99 1f       	adc	r25, r25
+ 556:	0e 94 4d 00 	call	0x9a	; 0x9a <EEPROM_voidWritePage>
+	Address_Index++ ;
+ 55a:	80 91 4e 02 	lds	r24, 0x024E	; 0x80024e <__data_end>
+ 55e:	8f 5f       	subi	r24, 0xFF	; 255
+ 560:	80 93 4e 02 	sts	0x024E, r24	; 0x80024e <__data_end>
+	Gol_Counter++;
+ 564:	80 91 6f 02 	lds	r24, 0x026F	; 0x80026f <Gol_Counter>
+ 568:	8f 5f       	subi	r24, 0xFF	; 255
+ 56a:	80 93 6f 02 	sts	0x026F, r24	; 0x80026f <Gol_Counter>
+ 56e:	08 95       	ret
+
+00000570 <Open_Door>:
+
+
+void Open_Door()
+{
+	
+	SPI_voidTransmiter('O');
+ 570:	8f e4       	ldi	r24, 0x4F	; 79
+ 572:	0e 94 a7 06 	call	0xd4e	; 0xd4e <SPI_voidTransmiter>
+	
+	
+	if (Glob_Door=='Y')
+ 576:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <Glob_Door>
+ 57a:	89 35       	cpi	r24, 0x59	; 89
+ 57c:	51 f4       	brne	.+20     	; 0x592 <Open_Door+0x22>
+	{
+		LCD_voidClear();
+ 57e:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_Door_Open_Successfully);
+ 582:	81 ec       	ldi	r24, 0xC1	; 193
+ 584:	90 e0       	ldi	r25, 0x00	; 0
+ 586:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_Door='N';
+ 58a:	8e e4       	ldi	r24, 0x4E	; 78
+ 58c:	80 93 25 02 	sts	0x0225, r24	; 0x800225 <Glob_Door>
+ 590:	08 95       	ret
+		
+	}
+	else if (Glob_Door=='N')
+ 592:	8e 34       	cpi	r24, 0x4E	; 78
+ 594:	49 f4       	brne	.+18     	; 0x5a8 <Open_Door+0x38>
+	{
+		LCD_voidClear();
+ 596:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_Door_Close_Successfully);
+ 59a:	8d e8       	ldi	r24, 0x8D	; 141
+ 59c:	90 e0       	ldi	r25, 0x00	; 0
+ 59e:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_Door='Y';
+ 5a2:	89 e5       	ldi	r24, 0x59	; 89
+ 5a4:	80 93 25 02 	sts	0x0225, r24	; 0x800225 <Glob_Door>
+ 5a8:	08 95       	ret
+
+000005aa <Media_Player>:
+	
+} 
+
+void Media_Player()
+{
+	SPI_voidTransmiter('M');
+ 5aa:	8d e4       	ldi	r24, 0x4D	; 77
+ 5ac:	0e 94 a7 06 	call	0xd4e	; 0xd4e <SPI_voidTransmiter>
+	
+	if (Glob_M=='Y')
+ 5b0:	80 91 23 02 	lds	r24, 0x0223	; 0x800223 <Glob_M>
+ 5b4:	89 35       	cpi	r24, 0x59	; 89
+ 5b6:	51 f4       	brne	.+20     	; 0x5cc <Media_Player+0x22>
+	{
+		LCD_voidClear();
+ 5b8:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_User_Successfully);
+ 5bc:	8e e9       	ldi	r24, 0x9E	; 158
+ 5be:	90 e0       	ldi	r25, 0x00	; 0
+ 5c0:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_M='N';
+ 5c4:	8e e4       	ldi	r24, 0x4E	; 78
+ 5c6:	80 93 23 02 	sts	0x0223, r24	; 0x800223 <Glob_M>
+ 5ca:	08 95       	ret
+		
+	}
+	else if (Glob_M=='N')
+ 5cc:	8e 34       	cpi	r24, 0x4E	; 78
+ 5ce:	49 f4       	brne	.+18     	; 0x5e2 <Media_Player+0x38>
+	{
+		LCD_voidClear();
+ 5d0:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_UserClose_Successfully);
+ 5d4:	88 e6       	ldi	r24, 0x68	; 104
+ 5d6:	90 e0       	ldi	r25, 0x00	; 0
+ 5d8:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_M='Y';
+ 5dc:	89 e5       	ldi	r24, 0x59	; 89
+ 5de:	80 93 23 02 	sts	0x0223, r24	; 0x800223 <Glob_M>
+ 5e2:	08 95       	ret
+
+000005e4 <Open_AC>:
+}
+
+
+void Open_AC()
+{
+	SPI_voidTransmiter('A');
+ 5e4:	81 e4       	ldi	r24, 0x41	; 65
+ 5e6:	0e 94 a7 06 	call	0xd4e	; 0xd4e <SPI_voidTransmiter>
+
+	
+	if (Glob_AC=='Y')
+ 5ea:	80 91 24 02 	lds	r24, 0x0224	; 0x800224 <Glob_AC>
+ 5ee:	89 35       	cpi	r24, 0x59	; 89
+ 5f0:	51 f4       	brne	.+20     	; 0x606 <Open_AC+0x22>
+	{
+		LCD_voidClear();
+ 5f2:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_User_OpenAC_Successfully);
+ 5f6:	83 eb       	ldi	r24, 0xB3	; 179
+ 5f8:	90 e0       	ldi	r25, 0x00	; 0
+ 5fa:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_AC='N';
+ 5fe:	8e e4       	ldi	r24, 0x4E	; 78
+ 600:	80 93 24 02 	sts	0x0224, r24	; 0x800224 <Glob_AC>
+ 604:	08 95       	ret
+		
+	}
+	else if (Glob_AC=='N')
+ 606:	8e 34       	cpi	r24, 0x4E	; 78
+ 608:	49 f4       	brne	.+18     	; 0x61c <Open_AC+0x38>
+	{
+		LCD_voidClear();
+ 60a:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+		LCD_voidWriteString(LCD_User_CloseAC_Successfully);
+ 60e:	8d e7       	ldi	r24, 0x7D	; 125
+ 610:	90 e0       	ldi	r25, 0x00	; 0
+ 612:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		Glob_AC='Y';
+ 616:	89 e5       	ldi	r24, 0x59	; 89
+ 618:	80 93 24 02 	sts	0x0224, r24	; 0x800224 <Glob_AC>
+ 61c:	08 95       	ret
+
+0000061e <lcd_view>:
+	}
+}
+
+void lcd_view()
+{
+	LCD_voidClear();
+ 61e:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+	LCD_voidWriteString(LCD_Welcome) ;
+ 622:	84 e3       	ldi	r24, 0x34	; 52
+ 624:	91 e0       	ldi	r25, 0x01	; 1
+ 626:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_TWO,0) ;
+ 62a:	60 e0       	ldi	r22, 0x00	; 0
+ 62c:	82 e0       	ldi	r24, 0x02	; 2
+ 62e:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_OpenDoor) ;
+ 632:	80 e2       	ldi	r24, 0x20	; 32
+ 634:	91 e0       	ldi	r25, 0x01	; 1
+ 636:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_THREE,0) ;
+ 63a:	60 e0       	ldi	r22, 0x00	; 0
+ 63c:	83 e0       	ldi	r24, 0x03	; 3
+ 63e:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_OpenAC) ;
+ 642:	8c e0       	ldi	r24, 0x0C	; 12
+ 644:	91 e0       	ldi	r25, 0x01	; 1
+ 646:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_FOUR,0) ;
+ 64a:	60 e0       	ldi	r22, 0x00	; 0
+ 64c:	84 e0       	ldi	r24, 0x04	; 4
+ 64e:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_LED) ;
+ 652:	88 ef       	ldi	r24, 0xF8	; 248
+ 654:	90 e0       	ldi	r25, 0x00	; 0
+ 656:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+ 65a:	08 95       	ret
+
+0000065c <Change_User_Password>:
+}
+
+
+void Change_User_Password(u8* Copy_Oldpassword,u8* Copy_Newpassword)
+
+{
+ 65c:	0f 93       	push	r16
+ 65e:	1f 93       	push	r17
+ 660:	cf 93       	push	r28
+ 662:	df 93       	push	r29
+ 664:	8c 01       	movw	r16, r24
+ 666:	eb 01       	movw	r28, r22
+	u8  Loc_Index ;
+	UART_VidSendChar('\r') ;
+ 668:	8d e0       	ldi	r24, 0x0D	; 13
+ 66a:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	UART_VidSendString(LCD_DelPass);
+ 66e:	80 e7       	ldi	r24, 0x70	; 112
+ 670:	91 e0       	ldi	r25, 0x01	; 1
+ 672:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+	UART_VidSendChar('\r') ;
+ 676:	8d e0       	ldi	r24, 0x0D	; 13
+ 678:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	
+	UART_IndexRx = UART_VidReceiveString(UART_PassRx) ;
+ 67c:	84 e5       	ldi	r24, 0x54	; 84
+ 67e:	92 e0       	ldi	r25, 0x02	; 2
+ 680:	0e 94 7d 07 	call	0xefa	; 0xefa <UART_VidReceiveString>
+ 684:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <UART_IndexRx>
+	UART_VidSendChar('\r') ;
+ 688:	8d e0       	ldi	r24, 0x0D	; 13
+ 68a:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+
+	UART_VidSendString(LCD_EnterPass2);
+ 68e:	82 e5       	ldi	r24, 0x52	; 82
+ 690:	91 e0       	ldi	r25, 0x01	; 1
+ 692:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+	UART_VidSendChar('\r') ;
+ 696:	8d e0       	ldi	r24, 0x0D	; 13
+ 698:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	
+	UART_IndexRx = UART_VidReceiveString(loc_new_pass) ;
+ 69c:	81 e6       	ldi	r24, 0x61	; 97
+ 69e:	92 e0       	ldi	r25, 0x02	; 2
+ 6a0:	0e 94 7d 07 	call	0xefa	; 0xefa <UART_VidReceiveString>
+ 6a4:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <UART_IndexRx>
+	UART_VidSendChar('\r') ;
+ 6a8:	8d e0       	ldi	r24, 0x0D	; 13
+ 6aa:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	
+	Loc_Index=EEPROM_u8Search(Copy_Oldpassword,Gol_Counter);
+ 6ae:	60 91 6f 02 	lds	r22, 0x026F	; 0x80026f <Gol_Counter>
+ 6b2:	c8 01       	movw	r24, r16
+ 6b4:	0e 94 b6 00 	call	0x16c	; 0x16c <EEPROM_u8Search>
+	EEPROM_voidSendDataPage(Loc_Index,Copy_Newpassword);
+ 6b8:	be 01       	movw	r22, r28
+ 6ba:	0e 94 fe 00 	call	0x1fc	; 0x1fc <EEPROM_voidSendDataPage>
+	
+}
+ 6be:	df 91       	pop	r29
+ 6c0:	cf 91       	pop	r28
+ 6c2:	1f 91       	pop	r17
+ 6c4:	0f 91       	pop	r16
+ 6c6:	08 95       	ret
+
+000006c8 <Delete_User>:
+
+void Delete_User(u8* Copy_Password,u8 Num_users)
+{
+ 6c8:	ff 92       	push	r15
+ 6ca:	0f 93       	push	r16
+ 6cc:	1f 93       	push	r17
+ 6ce:	cf 93       	push	r28
+ 6d0:	df 93       	push	r29
+ 6d2:	00 d0       	rcall	.+0      	; 0x6d4 <Delete_User+0xc>
+ 6d4:	00 d0       	rcall	.+0      	; 0x6d6 <Delete_User+0xe>
+ 6d6:	cd b7       	in	r28, 0x3d	; 61
+ 6d8:	de b7       	in	r29, 0x3e	; 62
+ 6da:	8c 01       	movw	r16, r24
+ 6dc:	f6 2e       	mov	r15, r22
+	
+	u8 Loc_Index = 0 ;
+	u8 Loc_arr[4]={'>','>','>','-'};
+ 6de:	8e e3       	ldi	r24, 0x3E	; 62
+ 6e0:	89 83       	std	Y+1, r24	; 0x01
+ 6e2:	8a 83       	std	Y+2, r24	; 0x02
+ 6e4:	8b 83       	std	Y+3, r24	; 0x03
+ 6e6:	8d e2       	ldi	r24, 0x2D	; 45
+ 6e8:	8c 83       	std	Y+4, r24	; 0x04
+	UART_VidSendString(LCD_DelPass) ;
+ 6ea:	80 e7       	ldi	r24, 0x70	; 112
+ 6ec:	91 e0       	ldi	r25, 0x01	; 1
+ 6ee:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+	UART_VidSendChar('\r') ;
+ 6f2:	8d e0       	ldi	r24, 0x0D	; 13
+ 6f4:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	UART_IndexRx = UART_VidReceiveString(UART_PassRx) ;
+ 6f8:	84 e5       	ldi	r24, 0x54	; 84
+ 6fa:	92 e0       	ldi	r25, 0x02	; 2
+ 6fc:	0e 94 7d 07 	call	0xefa	; 0xefa <UART_VidReceiveString>
+ 700:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <UART_IndexRx>
+	UART_VidSendChar('\r') ;
+ 704:	8d e0       	ldi	r24, 0x0D	; 13
+ 706:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	Loc_Index=EEPROM_u8Search(Copy_Password,Num_users);
+ 70a:	6f 2d       	mov	r22, r15
+ 70c:	c8 01       	movw	r24, r16
+ 70e:	0e 94 b6 00 	call	0x16c	; 0x16c <EEPROM_u8Search>
+	EEPROM_voidSendDataPage(Loc_Index,Loc_arr);
+ 712:	be 01       	movw	r22, r28
+ 714:	6f 5f       	subi	r22, 0xFF	; 255
+ 716:	7f 4f       	sbci	r23, 0xFF	; 255
+ 718:	0e 94 fe 00 	call	0x1fc	; 0x1fc <EEPROM_voidSendDataPage>
+	//Gol_Counter--;
+	
+}
+ 71c:	0f 90       	pop	r0
+ 71e:	0f 90       	pop	r0
+ 720:	0f 90       	pop	r0
+ 722:	0f 90       	pop	r0
+ 724:	df 91       	pop	r29
+ 726:	cf 91       	pop	r28
+ 728:	1f 91       	pop	r17
+ 72a:	0f 91       	pop	r16
+ 72c:	ff 90       	pop	r15
+ 72e:	08 95       	ret
+
+00000730 <User_List>:
+
+	
+}
+
+void User_List()
+{
+ 730:	cf 93       	push	r28
+	
+	u8 Loc_GetChar=255;
+	LCD_voidClear();
+ 732:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+
+	LCD_voidWriteString(LCD_Welcome) ;
+ 736:	84 e3       	ldi	r24, 0x34	; 52
+ 738:	91 e0       	ldi	r25, 0x01	; 1
+ 73a:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_TWO,0) ;
+ 73e:	60 e0       	ldi	r22, 0x00	; 0
+ 740:	82 e0       	ldi	r24, 0x02	; 2
+ 742:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_OpenDoor) ;
+ 746:	80 e2       	ldi	r24, 0x20	; 32
+ 748:	91 e0       	ldi	r25, 0x01	; 1
+ 74a:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_THREE,0) ;
+ 74e:	60 e0       	ldi	r22, 0x00	; 0
+ 750:	83 e0       	ldi	r24, 0x03	; 3
+ 752:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_OpenAC) ;
+ 756:	8c e0       	ldi	r24, 0x0C	; 12
+ 758:	91 e0       	ldi	r25, 0x01	; 1
+ 75a:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_FOUR,0) ;
+ 75e:	60 e0       	ldi	r22, 0x00	; 0
+ 760:	84 e0       	ldi	r24, 0x04	; 4
+ 762:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User_LED) ;
+ 766:	88 ef       	ldi	r24, 0xF8	; 248
+ 768:	90 e0       	ldi	r25, 0x00	; 0
+ 76a:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+}
+
+void User_List()
+{
+	
+	u8 Loc_GetChar=255;
+ 76e:	cf ef       	ldi	r28, 0xFF	; 255
+	LCD_voidGoToSpecificPosition(LCD_LINE_THREE,0) ;
+	LCD_voidWriteString(LCD_User_OpenAC) ;
+	LCD_voidGoToSpecificPosition(LCD_LINE_FOUR,0) ;
+	LCD_voidWriteString(LCD_User_LED) ;
+	
+	while(Loc_GetChar!='/')
+ 770:	30 c0       	rjmp	.+96     	; 0x7d2 <User_List+0xa2>
+	{
+
+		Loc_GetChar = Keypad_U8GetKeyPressed();
+ 772:	0e 94 24 01 	call	0x248	; 0x248 <Keypad_U8GetKeyPressed>
+ 776:	c8 2f       	mov	r28, r24
+	
+		if (Loc_GetChar != 255)
+ 778:	8f 3f       	cpi	r24, 0xFF	; 255
+ 77a:	59 f1       	breq	.+86     	; 0x7d2 <User_List+0xa2>
+		{
+			switch(Loc_GetChar)
+ 77c:	82 33       	cpi	r24, 0x32	; 50
+ 77e:	39 f0       	breq	.+14     	; 0x78e <User_List+0x5e>
+ 780:	83 33       	cpi	r24, 0x33	; 51
+ 782:	41 f0       	breq	.+16     	; 0x794 <User_List+0x64>
+ 784:	81 33       	cpi	r24, 0x31	; 49
+ 786:	49 f4       	brne	.+18     	; 0x79a <User_List+0x6a>
+			{
+				case '1':
+				Open_Door();
+ 788:	0e 94 b8 02 	call	0x570	; 0x570 <Open_Door>
+
+				break;
+ 78c:	16 c0       	rjmp	.+44     	; 0x7ba <User_List+0x8a>
+				case '2':
+				Open_AC();
+ 78e:	0e 94 f2 02 	call	0x5e4	; 0x5e4 <Open_AC>
+				break;
+ 792:	13 c0       	rjmp	.+38     	; 0x7ba <User_List+0x8a>
+				case '3' :
+				Media_Player();
+ 794:	0e 94 d5 02 	call	0x5aa	; 0x5aa <Media_Player>
+				break;
+ 798:	10 c0       	rjmp	.+32     	; 0x7ba <User_List+0x8a>
+				default:
+				LCD_voidWriteString(Invalid_Command) ;
+ 79a:	81 e4       	ldi	r24, 0x41	; 65
+ 79c:	91 e0       	ldi	r25, 0x01	; 1
+ 79e:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 7a2:	80 e1       	ldi	r24, 0x10	; 16
+ 7a4:	97 e2       	ldi	r25, 0x27	; 39
+ 7a6:	05 c0       	rjmp	.+10     	; 0x7b2 <User_List+0x82>
+ 7a8:	e0 e9       	ldi	r30, 0x90	; 144
+ 7aa:	f1 e0       	ldi	r31, 0x01	; 1
+ 7ac:	31 97       	sbiw	r30, 0x01	; 1
+ 7ae:	f1 f7       	brne	.-4      	; 0x7ac <User_List+0x7c>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 7b0:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 7b2:	00 97       	sbiw	r24, 0x00	; 0
+ 7b4:	c9 f7       	brne	.-14     	; 0x7a8 <User_List+0x78>
+				_delay_ms(1000);
+				LCD_voidClear() ; 
+ 7b6:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 7ba:	80 e1       	ldi	r24, 0x10	; 16
+ 7bc:	97 e2       	ldi	r25, 0x27	; 39
+ 7be:	05 c0       	rjmp	.+10     	; 0x7ca <User_List+0x9a>
+ 7c0:	e0 e9       	ldi	r30, 0x90	; 144
+ 7c2:	f1 e0       	ldi	r31, 0x01	; 1
+ 7c4:	31 97       	sbiw	r30, 0x01	; 1
+ 7c6:	f1 f7       	brne	.-4      	; 0x7c4 <User_List+0x94>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 7c8:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 7ca:	00 97       	sbiw	r24, 0x00	; 0
+ 7cc:	c9 f7       	brne	.-14     	; 0x7c0 <User_List+0x90>
+				break;
+			}
+			_delay_ms(1000);
+			lcd_view() ;
+ 7ce:	0e 94 0f 03 	call	0x61e	; 0x61e <lcd_view>
+	LCD_voidGoToSpecificPosition(LCD_LINE_THREE,0) ;
+	LCD_voidWriteString(LCD_User_OpenAC) ;
+	LCD_voidGoToSpecificPosition(LCD_LINE_FOUR,0) ;
+	LCD_voidWriteString(LCD_User_LED) ;
+	
+	while(Loc_GetChar!='/')
+ 7d2:	cf 32       	cpi	r28, 0x2F	; 47
+ 7d4:	71 f6       	brne	.-100    	; 0x772 <User_List+0x42>
+			_delay_ms(1000);
+			lcd_view() ;
+		}
+	}
+	
+}
+ 7d6:	cf 91       	pop	r28
+ 7d8:	08 95       	ret
+
+000007da <Check_Pass>:
+}
+
+
+
+void Check_Pass(u8* arr)
+{
+ 7da:	cf 93       	push	r28
+ 7dc:	df 93       	push	r29
+ 7de:	ec 01       	movw	r28, r24
+	
+
+	u8 Loc_Index=500;
+	u8 Local_u8Counter =0  ; 
+	Loc_Index =EEPROM_u8Search (arr,Gol_Counter) ;
+ 7e0:	60 91 6f 02 	lds	r22, 0x026F	; 0x80026f <Gol_Counter>
+ 7e4:	0e 94 b6 00 	call	0x16c	; 0x16c <EEPROM_u8Search>
+	
+
+	if (arr[3] != '-')
+ 7e8:	9b 81       	ldd	r25, Y+3	; 0x03
+ 7ea:	9d 32       	cpi	r25, 0x2D	; 45
+ 7ec:	11 f4       	brne	.+4      	; 0x7f2 <Check_Pass+0x18>
+void Check_Pass(u8* arr)
+{
+	
+
+	u8 Loc_Index=500;
+	u8 Local_u8Counter =0  ; 
+ 7ee:	90 e0       	ldi	r25, 0x00	; 0
+ 7f0:	01 c0       	rjmp	.+2      	; 0x7f4 <Check_Pass+0x1a>
+	Loc_Index =EEPROM_u8Search (arr,Gol_Counter) ;
+	
+
+	if (arr[3] != '-')
+	{
+		Local_u8Counter ++ ;
+ 7f2:	91 e0       	ldi	r25, 0x01	; 1
+		
+	}
+	
+	 if (  (Loc_Index !=250) && (Local_u8Counter==0) )
+ 7f4:	8a 3f       	cpi	r24, 0xFA	; 250
+ 7f6:	69 f0       	breq	.+26     	; 0x812 <__DATA_REGION_LENGTH__+0x12>
+ 7f8:	91 11       	cpse	r25, r1
+ 7fa:	0b c0       	rjmp	.+22     	; 0x812 <__DATA_REGION_LENGTH__+0x12>
+	{
+		Loc_flag = 0 ;
+ 7fc:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <Loc_flag>
+		Error_Flag = 1 ;
+ 800:	81 e0       	ldi	r24, 0x01	; 1
+ 802:	90 e0       	ldi	r25, 0x00	; 0
+ 804:	90 93 51 02 	sts	0x0251, r25	; 0x800251 <Error_Flag+0x1>
+ 808:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <Error_Flag>
+		User_List();
+ 80c:	0e 94 98 03 	call	0x730	; 0x730 <User_List>
+ 810:	67 c0       	rjmp	.+206    	; 0x8e0 <__stack+0x81>
+	}
+	else
+	{
+		if (Loc_flag!=2)
+ 812:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <Loc_flag>
+ 816:	82 30       	cpi	r24, 0x02	; 2
+ 818:	09 f4       	brne	.+2      	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 81a:	43 c0       	rjmp	.+134    	; 0x8a2 <__stack+0x43>
+		{
+			LCD_voidClear();
+ 81c:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+			LCD_voidWriteString(LCD_WrongPass);
+ 820:	89 ee       	ldi	r24, 0xE9	; 233
+ 822:	90 e0       	ldi	r25, 0x00	; 0
+ 824:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 828:	84 ec       	ldi	r24, 0xC4	; 196
+ 82a:	99 e0       	ldi	r25, 0x09	; 9
+ 82c:	05 c0       	rjmp	.+10     	; 0x838 <__DATA_REGION_LENGTH__+0x38>
+ 82e:	e0 e9       	ldi	r30, 0x90	; 144
+ 830:	f1 e0       	ldi	r31, 0x01	; 1
+ 832:	31 97       	sbiw	r30, 0x01	; 1
+ 834:	f1 f7       	brne	.-4      	; 0x832 <__DATA_REGION_LENGTH__+0x32>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 836:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 838:	00 97       	sbiw	r24, 0x00	; 0
+ 83a:	c9 f7       	brne	.-14     	; 0x82e <__DATA_REGION_LENGTH__+0x2e>
+			_delay_ms(250);
+			LCD_voidClear();
+ 83c:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 840:	84 ec       	ldi	r24, 0xC4	; 196
+ 842:	99 e0       	ldi	r25, 0x09	; 9
+ 844:	05 c0       	rjmp	.+10     	; 0x850 <__DATA_REGION_LENGTH__+0x50>
+ 846:	e0 e9       	ldi	r30, 0x90	; 144
+ 848:	f1 e0       	ldi	r31, 0x01	; 1
+ 84a:	31 97       	sbiw	r30, 0x01	; 1
+ 84c:	f1 f7       	brne	.-4      	; 0x84a <__DATA_REGION_LENGTH__+0x4a>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 84e:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 850:	00 97       	sbiw	r24, 0x00	; 0
+ 852:	c9 f7       	brne	.-14     	; 0x846 <__DATA_REGION_LENGTH__+0x46>
+			_delay_ms(250);
+			LCD_voidWriteString(LCD_TryAgain);
+ 854:	8f ed       	ldi	r24, 0xDF	; 223
+ 856:	90 e0       	ldi	r25, 0x00	; 0
+ 858:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 85c:	84 ec       	ldi	r24, 0xC4	; 196
+ 85e:	99 e0       	ldi	r25, 0x09	; 9
+ 860:	05 c0       	rjmp	.+10     	; 0x86c <__stack+0xd>
+ 862:	e0 e9       	ldi	r30, 0x90	; 144
+ 864:	f1 e0       	ldi	r31, 0x01	; 1
+ 866:	31 97       	sbiw	r30, 0x01	; 1
+ 868:	f1 f7       	brne	.-4      	; 0x866 <__stack+0x7>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 86a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 86c:	00 97       	sbiw	r24, 0x00	; 0
+ 86e:	c9 f7       	brne	.-14     	; 0x862 <__stack+0x3>
+			_delay_ms(250);
+			LCD_voidClear() ;
+ 870:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+			LCD_voidWriteString(LCD_EnterPass);
+ 874:	81 e6       	ldi	r24, 0x61	; 97
+ 876:	91 e0       	ldi	r25, 0x01	; 1
+ 878:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+			// Print Failed to Login 
+			UART_VidSendString(LCD_MOde6);
+ 87c:	8c ec       	ldi	r24, 0xCC	; 204
+ 87e:	91 e0       	ldi	r25, 0x01	; 1
+ 880:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ 884:	8d e0       	ldi	r24, 0x0D	; 13
+ 886:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			Loc_flag++;
+ 88a:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <Loc_flag>
+ 88e:	8f 5f       	subi	r24, 0xFF	; 255
+ 890:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <Loc_flag>
+			Error_Flag = 1 ;
+ 894:	81 e0       	ldi	r24, 0x01	; 1
+ 896:	90 e0       	ldi	r25, 0x00	; 0
+ 898:	90 93 51 02 	sts	0x0251, r25	; 0x800251 <Error_Flag+0x1>
+ 89c:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <Error_Flag>
+ 8a0:	1f c0       	rjmp	.+62     	; 0x8e0 <__stack+0x81>
+
+
+		}
+		else if (Loc_flag == 2)
+ 8a2:	82 30       	cpi	r24, 0x02	; 2
+ 8a4:	e9 f4       	brne	.+58     	; 0x8e0 <__stack+0x81>
+		{
+			UART_VidSendString(LCD_MOde7);
+ 8a6:	82 ea       	ldi	r24, 0xA2	; 162
+ 8a8:	91 e0       	ldi	r25, 0x01	; 1
+ 8aa:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ 8ae:	8d e0       	ldi	r24, 0x0D	; 13
+ 8b0:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			LCD_voidWriteString(LCD_OutOfTrials) ;
+ 8b4:	80 ed       	ldi	r24, 0xD0	; 208
+ 8b6:	90 e0       	ldi	r25, 0x00	; 0
+ 8b8:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 8bc:	88 e8       	ldi	r24, 0x88	; 136
+ 8be:	93 e1       	ldi	r25, 0x13	; 19
+ 8c0:	05 c0       	rjmp	.+10     	; 0x8cc <__stack+0x6d>
+ 8c2:	e0 e9       	ldi	r30, 0x90	; 144
+ 8c4:	f1 e0       	ldi	r31, 0x01	; 1
+ 8c6:	31 97       	sbiw	r30, 0x01	; 1
+ 8c8:	f1 f7       	brne	.-4      	; 0x8c6 <__stack+0x67>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 8ca:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 8cc:	00 97       	sbiw	r24, 0x00	; 0
+ 8ce:	c9 f7       	brne	.-14     	; 0x8c2 <__stack+0x63>
+			_delay_ms(500);
+			LCD_voidClear() ;
+ 8d0:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+			Dio_voidWritepinchannel(PC6,PIN_HIGH);
+ 8d4:	61 e0       	ldi	r22, 0x01	; 1
+ 8d6:	86 e1       	ldi	r24, 0x16	; 22
+ 8d8:	0e 94 3f 06 	call	0xc7e	; 0xc7e <Dio_voidWritepinchannel>
+			Loc_flag = 0 ;
+ 8dc:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <Loc_flag>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 8e0:	80 e0       	ldi	r24, 0x00	; 0
+ 8e2:	07 c0       	rjmp	.+14     	; 0x8f2 <__stack+0x93>
+
+		}
+		
+	for (Local_u8Counter = 0 ; Local_u8Counter<4 ; Local_u8Counter++)
+	{
+		Loc_Password[Local_u8Counter]='-'; 
+ 8e4:	e8 2f       	mov	r30, r24
+ 8e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 8e8:	e2 5e       	subi	r30, 0xE2	; 226
+ 8ea:	fd 4f       	sbci	r31, 0xFD	; 253
+ 8ec:	9d e2       	ldi	r25, 0x2D	; 45
+ 8ee:	90 83       	st	Z, r25
+			Loc_flag = 0 ;
+		}
+
+		}
+		
+	for (Local_u8Counter = 0 ; Local_u8Counter<4 ; Local_u8Counter++)
+ 8f0:	8f 5f       	subi	r24, 0xFF	; 255
+ 8f2:	84 30       	cpi	r24, 0x04	; 4
+ 8f4:	b8 f3       	brcs	.-18     	; 0x8e4 <__stack+0x85>
+	{
+		Loc_Password[Local_u8Counter]='-'; 
+	}
+
+	
+}
+ 8f6:	df 91       	pop	r29
+ 8f8:	cf 91       	pop	r28
+ 8fa:	08 95       	ret
+
+000008fc <App_Init>:
+
+void App_Init()
+{
+
+	/*Make The Buzzer Output */
+	Dio_voidSetpinchmode(PC6,OUTPUT_LOW);
+ 8fc:	63 e0       	ldi	r22, 0x03	; 3
+ 8fe:	86 e1       	ldi	r24, 0x16	; 22
+ 900:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	
+	/* SPI */ 
+	//SS
+	Dio_voidSetpinchmode(PA4,OUTPUT_LOW);
+ 904:	63 e0       	ldi	r22, 0x03	; 3
+ 906:	84 e0       	ldi	r24, 0x04	; 4
+ 908:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	//MOSI
+	Dio_voidSetpinchmode(PB5,OUTPUT_LOW);
+ 90c:	63 e0       	ldi	r22, 0x03	; 3
+ 90e:	8d e0       	ldi	r24, 0x0D	; 13
+ 910:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	//MISO
+	Dio_voidSetpinchmode(PB6,INPUT);
+ 914:	61 e0       	ldi	r22, 0x01	; 1
+ 916:	8e e0       	ldi	r24, 0x0E	; 14
+ 918:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	//SCK
+	Dio_voidSetpinchmode(PB7,OUTPUT_LOW);
+ 91c:	63 e0       	ldi	r22, 0x03	; 3
+ 91e:	8f e0       	ldi	r24, 0x0F	; 15
+ 920:	0e 94 c3 05 	call	0xb86	; 0xb86 <Dio_voidSetpinchmode>
+	
+	
+	LCD_voidInit();
+ 924:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <LCD_voidInit>
+	Keypad_VidInit();
+ 928:	0e 94 07 01 	call	0x20e	; 0x20e <Keypad_VidInit>
+	UART_VidInit();
+ 92c:	0e 94 4e 07 	call	0xe9c	; 0xe9c <UART_VidInit>
+	SPI_voidInialize() ;
+ 930:	0e 94 8b 06 	call	0xd16	; 0xd16 <SPI_voidInialize>
+	EEPROM_voidInit() ;
+ 934:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_voidInit>
+ 938:	08 95       	ret
+
+0000093a <Password_Checking>:
+}
+
+
+void Password_Checking ()
+{
+	Loc_GetChar = Keypad_U8GetKeyPressed();
+ 93a:	0e 94 24 01 	call	0x248	; 0x248 <Keypad_U8GetKeyPressed>
+ 93e:	80 93 22 02 	sts	0x0222, r24	; 0x800222 <Loc_GetChar>
+		
+	if (Loc_GetChar == '=')
+ 942:	8d 33       	cpi	r24, 0x3D	; 61
+ 944:	29 f4       	brne	.+10     	; 0x950 <Password_Checking+0x16>
+	{
+		Check_Pass(Loc_Password);
+ 946:	8e e1       	ldi	r24, 0x1E	; 30
+ 948:	92 e0       	ldi	r25, 0x02	; 2
+ 94a:	0e 94 ed 03 	call	0x7da	; 0x7da <Check_Pass>
+ 94e:	0f c0       	rjmp	.+30     	; 0x96e <Password_Checking+0x34>
+		Loc_Count = 0 ;
+	}
+	else if (Loc_GetChar != 255)
+ 950:	8f 3f       	cpi	r24, 0xFF	; 255
+ 952:	69 f0       	breq	.+26     	; 0x96e <Password_Checking+0x34>
+	{
+		LCD_voidSendChar('*');
+ 954:	8a e2       	ldi	r24, 0x2A	; 42
+ 956:	0e 94 1e 02 	call	0x43c	; 0x43c <LCD_voidSendChar>
+		Loc_Password[Loc_Count]=Loc_GetChar;
+ 95a:	e0 91 52 02 	lds	r30, 0x0252	; 0x800252 <Loc_Count>
+ 95e:	0e 2e       	mov	r0, r30
+ 960:	00 0c       	add	r0, r0
+ 962:	ff 0b       	sbc	r31, r31
+ 964:	e2 5e       	subi	r30, 0xE2	; 226
+ 966:	fd 4f       	sbci	r31, 0xFD	; 253
+ 968:	80 91 22 02 	lds	r24, 0x0222	; 0x800222 <Loc_GetChar>
+ 96c:	80 83       	st	Z, r24
+		Loc_Count++;
+	}
+	
+	Loc_Count=0;
+ 96e:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <Loc_Count>
+ 972:	08 95       	ret
+
+00000974 <Check_Admin>:
+}
+
+void Check_Admin(void)
+{
+
+	LCD_voidClear(); 
+ 974:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+	/* Check User or ADMIN */
+	LCD_voidWriteString(LCD_Admin) ;
+ 978:	8a e9       	ldi	r24, 0x9A	; 154
+ 97a:	91 e0       	ldi	r25, 0x01	; 1
+ 97c:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+	LCD_voidGoToSpecificPosition(LCD_LINE_TWO,0) ;
+ 980:	60 e0       	ldi	r22, 0x00	; 0
+ 982:	82 e0       	ldi	r24, 0x02	; 2
+ 984:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <LCD_voidGoToSpecificPosition>
+	LCD_voidWriteString(LCD_User) ;
+ 988:	83 e9       	ldi	r24, 0x93	; 147
+ 98a:	91 e0       	ldi	r25, 0x01	; 1
+ 98c:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+
+	UART_State = UART_u8ReceiveData() ;
+ 990:	0e 94 66 07 	call	0xecc	; 0xecc <UART_u8ReceiveData>
+ 994:	80 93 64 02 	sts	0x0264, r24	; 0x800264 <UART_State>
+	UART_VidSendChar('\r') ;
+ 998:	8d e0       	ldi	r24, 0x0D	; 13
+ 99a:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+	
+	LCD_voidClear();
+ 99e:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+	
+	/* User or ADMIN Options */ 
+	if (UART_State == 'A')
+ 9a2:	80 91 64 02 	lds	r24, 0x0264	; 0x800264 <UART_State>
+ 9a6:	81 34       	cpi	r24, 0x41	; 65
+ 9a8:	09 f0       	breq	.+2      	; 0x9ac <Check_Admin+0x38>
+ 9aa:	51 c0       	rjmp	.+162    	; 0xa4e <Check_Admin+0xda>
+	{
+		LCD_voidWriteString(LCD_PASS) ;
+ 9ac:	83 e8       	ldi	r24, 0x83	; 131
+ 9ae:	91 e0       	ldi	r25, 0x01	; 1
+ 9b0:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+		/* All Modes */
+		UART_VidSendString(LCD_Mode1) ;
+ 9b4:	83 e1       	ldi	r24, 0x13	; 19
+ 9b6:	92 e0       	ldi	r25, 0x02	; 2
+ 9b8:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+		UART_VidSendChar('\r') ;
+ 9bc:	8d e0       	ldi	r24, 0x0D	; 13
+ 9be:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+		UART_VidSendString(LCD_Mode2) ;
+ 9c2:	85 e0       	ldi	r24, 0x05	; 5
+ 9c4:	92 e0       	ldi	r25, 0x02	; 2
+ 9c6:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+		UART_VidSendChar('\r') ;
+ 9ca:	8d e0       	ldi	r24, 0x0D	; 13
+ 9cc:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+		UART_VidSendString(LCD_Mode3) ;
+ 9d0:	86 ef       	ldi	r24, 0xF6	; 246
+ 9d2:	91 e0       	ldi	r25, 0x01	; 1
+ 9d4:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+		UART_VidSendChar('\r') ;
+ 9d8:	8d e0       	ldi	r24, 0x0D	; 13
+ 9da:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+		UART_VidSendString(LCD_Mode4) ;
+ 9de:	8b ee       	ldi	r24, 0xEB	; 235
+ 9e0:	91 e0       	ldi	r25, 0x01	; 1
+ 9e2:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+		UART_VidSendChar('\r') ;
+ 9e6:	8d e0       	ldi	r24, 0x0D	; 13
+ 9e8:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+				
+		/* Choose Mode */
+		UART_State = UART_u8ReceiveData() ;
+ 9ec:	0e 94 66 07 	call	0xecc	; 0xecc <UART_u8ReceiveData>
+ 9f0:	80 93 64 02 	sts	0x0264, r24	; 0x800264 <UART_State>
+		UART_VidSendChar('\r') ;
+ 9f4:	8d e0       	ldi	r24, 0x0D	; 13
+ 9f6:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+
+		
+		if (UART_State == 'D')
+ 9fa:	80 91 64 02 	lds	r24, 0x0264	; 0x800264 <UART_State>
+ 9fe:	84 34       	cpi	r24, 0x44	; 68
+ a00:	19 f5       	brne	.+70     	; 0xa48 <Check_Admin+0xd4>
+		{
+			UART_VidSendString(LCD_User_OpenDoor) ;
+ a02:	80 e2       	ldi	r24, 0x20	; 32
+ a04:	91 e0       	ldi	r25, 0x01	; 1
+ a06:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ a0a:	8d e0       	ldi	r24, 0x0D	; 13
+ a0c:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			UART_VidSendString(LCD_User_OpenAC) ;
+ a10:	8c e0       	ldi	r24, 0x0C	; 12
+ a12:	91 e0       	ldi	r25, 0x01	; 1
+ a14:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ a18:	8d e0       	ldi	r24, 0x0D	; 13
+ a1a:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			UART_VidSendString(LCD_User_LED) ;
+ a1e:	88 ef       	ldi	r24, 0xF8	; 248
+ a20:	90 e0       	ldi	r25, 0x00	; 0
+ a22:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ a26:	8d e0       	ldi	r24, 0x0D	; 13
+ a28:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			UART_VidSendString(LCD_Mode5) ;
+ a2c:	8d ed       	ldi	r24, 0xDD	; 221
+ a2e:	91 e0       	ldi	r25, 0x01	; 1
+ a30:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+			UART_VidSendChar('\r') ;
+ a34:	8d e0       	ldi	r24, 0x0D	; 13
+ a36:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+			UART_State = UART_u8ReceiveData() ;
+ a3a:	0e 94 66 07 	call	0xecc	; 0xecc <UART_u8ReceiveData>
+ a3e:	80 93 64 02 	sts	0x0264, r24	; 0x800264 <UART_State>
+			UART_VidSendChar('\r') ;
+ a42:	8d e0       	ldi	r24, 0x0D	; 13
+ a44:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+
+		}
+		
+		Choose_Operation() ;
+ a48:	0e 94 7f 05 	call	0xafe	; 0xafe <Choose_Operation>
+ a4c:	08 95       	ret
+	}
+	
+	
+	
+	else if (UART_State=='U')
+ a4e:	85 35       	cpi	r24, 0x55	; 85
+ a50:	09 f0       	breq	.+2      	; 0xa54 <Check_Admin+0xe0>
+ a52:	3f c0       	rjmp	.+126    	; 0xad2 <Check_Admin+0x15e>
+	{
+		LCD_voidWriteString(LCD_PASS) ;
+ a54:	83 e8       	ldi	r24, 0x83	; 131
+ a56:	91 e0       	ldi	r25, 0x01	; 1
+ a58:	0e 94 4f 02 	call	0x49e	; 0x49e <LCD_voidWriteString>
+ a5c:	84 ec       	ldi	r24, 0xC4	; 196
+ a5e:	99 e0       	ldi	r25, 0x09	; 9
+ a60:	05 c0       	rjmp	.+10     	; 0xa6c <Check_Admin+0xf8>
+ a62:	e0 e9       	ldi	r30, 0x90	; 144
+ a64:	f1 e0       	ldi	r31, 0x01	; 1
+ a66:	31 97       	sbiw	r30, 0x01	; 1
+ a68:	f1 f7       	brne	.-4      	; 0xa66 <Check_Admin+0xf2>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ a6a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ a6c:	00 97       	sbiw	r24, 0x00	; 0
+ a6e:	c9 f7       	brne	.-14     	; 0xa62 <Check_Admin+0xee>
+ a70:	2b c0       	rjmp	.+86     	; 0xac8 <Check_Admin+0x154>
+		_delay_ms(250);
+		
+		while (Loc_GetChar!='/')
+		{
+			
+		Loc_GetChar = Keypad_U8GetKeyPressed();
+ a72:	0e 94 24 01 	call	0x248	; 0x248 <Keypad_U8GetKeyPressed>
+ a76:	80 93 22 02 	sts	0x0222, r24	; 0x800222 <Loc_GetChar>
+		
+		if (Loc_GetChar != 255)
+ a7a:	8f 3f       	cpi	r24, 0xFF	; 255
+ a7c:	29 f1       	breq	.+74     	; 0xac8 <Check_Admin+0x154>
+		{
+			switch(Loc_GetChar)
+ a7e:	8d 33       	cpi	r24, 0x3D	; 61
+ a80:	91 f4       	brne	.+36     	; 0xaa6 <Check_Admin+0x132>
+			{
+				case '=':
+						LCD_voidClear();
+ a82:	0e 94 66 02 	call	0x4cc	; 0x4cc <LCD_voidClear>
+						Check_Pass(Loc_Password);
+ a86:	8e e1       	ldi	r24, 0x1E	; 30
+ a88:	92 e0       	ldi	r25, 0x02	; 2
+ a8a:	0e 94 ed 03 	call	0x7da	; 0x7da <Check_Pass>
+						Loc_Count = 0 ;
+ a8e:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <Loc_Count>
+									
+						while (Error_Flag==0)
+ a92:	02 c0       	rjmp	.+4      	; 0xa98 <Check_Admin+0x124>
+							{
+								Password_Checking () ;
+ a94:	0e 94 9d 04 	call	0x93a	; 0x93a <Password_Checking>
+				case '=':
+						LCD_voidClear();
+						Check_Pass(Loc_Password);
+						Loc_Count = 0 ;
+									
+						while (Error_Flag==0)
+ a98:	80 91 50 02 	lds	r24, 0x0250	; 0x800250 <Error_Flag>
+ a9c:	90 91 51 02 	lds	r25, 0x0251	; 0x800251 <Error_Flag+0x1>
+ aa0:	89 2b       	or	r24, r25
+ aa2:	c1 f3       	breq	.-16     	; 0xa94 <Check_Admin+0x120>
+ aa4:	11 c0       	rjmp	.+34     	; 0xac8 <Check_Admin+0x154>
+							}
+						break;
+						
+									
+				default:
+						LCD_voidSendChar('*');
+ aa6:	8a e2       	ldi	r24, 0x2A	; 42
+ aa8:	0e 94 1e 02 	call	0x43c	; 0x43c <LCD_voidSendChar>
+						Loc_Password[Loc_Count]=Loc_GetChar;
+ aac:	80 91 52 02 	lds	r24, 0x0252	; 0x800252 <Loc_Count>
+ ab0:	e8 2f       	mov	r30, r24
+ ab2:	08 2e       	mov	r0, r24
+ ab4:	00 0c       	add	r0, r0
+ ab6:	ff 0b       	sbc	r31, r31
+ ab8:	e2 5e       	subi	r30, 0xE2	; 226
+ aba:	fd 4f       	sbci	r31, 0xFD	; 253
+ abc:	90 91 22 02 	lds	r25, 0x0222	; 0x800222 <Loc_GetChar>
+ ac0:	90 83       	st	Z, r25
+						Loc_Count++;
+ ac2:	8f 5f       	subi	r24, 0xFF	; 255
+ ac4:	80 93 52 02 	sts	0x0252, r24	; 0x800252 <Loc_Count>
+	else if (UART_State=='U')
+	{
+		LCD_voidWriteString(LCD_PASS) ;
+		_delay_ms(250);
+		
+		while (Loc_GetChar!='/')
+ ac8:	80 91 22 02 	lds	r24, 0x0222	; 0x800222 <Loc_GetChar>
+ acc:	8f 32       	cpi	r24, 0x2F	; 47
+ ace:	89 f6       	brne	.-94     	; 0xa72 <Check_Admin+0xfe>
+ ad0:	08 95       	ret
+	}
+}
+	
+	else 
+	{
+		UART_VidSendString(Invalid_Command) ;
+ ad2:	81 e4       	ldi	r24, 0x41	; 65
+ ad4:	91 e0       	ldi	r25, 0x01	; 1
+ ad6:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+		UART_VidSendChar('\r') ;
+ ada:	8d e0       	ldi	r24, 0x0D	; 13
+ adc:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+ ae0:	08 95       	ret
+
+00000ae2 <main>:
+
+
+int main(void)
+{
+
+	App_Init() ;
+ ae2:	0e 94 7e 04 	call	0x8fc	; 0x8fc <App_Init>
+	Check_Admin() ;
+ ae6:	0e 94 ba 04 	call	0x974	; 0x974 <Check_Admin>
+
+
+	while(1)
+	{
+		UART_State = UART_u8ReceiveData();
+ aea:	0e 94 66 07 	call	0xecc	; 0xecc <UART_u8ReceiveData>
+ aee:	80 93 64 02 	sts	0x0264, r24	; 0x800264 <UART_State>
+		UART_VidSendChar('\r') ;
+ af2:	8d e0       	ldi	r24, 0x0D	; 13
+ af4:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+		Check_Admin();
+ af8:	0e 94 ba 04 	call	0x974	; 0x974 <Check_Admin>
+ afc:	f6 cf       	rjmp	.-20     	; 0xaea <main+0x8>
+
+00000afe <Choose_Operation>:
+}
+
+void Choose_Operation(){
+
+
+	switch (UART_State)
+ afe:	80 91 64 02 	lds	r24, 0x0264	; 0x800264 <UART_State>
+ b02:	82 34       	cpi	r24, 0x42	; 66
+ b04:	99 f0       	breq	.+38     	; 0xb2c <Choose_Operation+0x2e>
+ b06:	18 f4       	brcc	.+6      	; 0xb0e <Choose_Operation+0x10>
+ b08:	81 34       	cpi	r24, 0x41	; 65
+ b0a:	31 f0       	breq	.+12     	; 0xb18 <Choose_Operation+0x1a>
+ b0c:	34 c0       	rjmp	.+104    	; 0xb76 <Choose_Operation+0x78>
+ b0e:	83 34       	cpi	r24, 0x43	; 67
+ b10:	f1 f0       	breq	.+60     	; 0xb4e <Choose_Operation+0x50>
+ b12:	81 35       	cpi	r24, 0x51	; 81
+ b14:	51 f1       	breq	.+84     	; 0xb6a <Choose_Operation+0x6c>
+ b16:	2f c0       	rjmp	.+94     	; 0xb76 <Choose_Operation+0x78>
+	{
+		case 'A': 
+
+							Add_User() ;
+ b18:	0e 94 9f 02 	call	0x53e	; 0x53e <Add_User>
+							UART_VidSendString(Done) ;	
+ b1c:	8c e3       	ldi	r24, 0x3C	; 60
+ b1e:	91 e0       	ldi	r25, 0x01	; 1
+ b20:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+							UART_VidSendChar('\r') ;					
+ b24:	8d e0       	ldi	r24, 0x0D	; 13
+ b26:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+							break;
+ b2a:	08 95       	ret
+							
+							
+		case 'B': 
+							UART_VidSendChar('\r') ;
+ b2c:	8d e0       	ldi	r24, 0x0D	; 13
+ b2e:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+							Delete_User(UART_PassRx,Gol_Counter);
+ b32:	60 91 6f 02 	lds	r22, 0x026F	; 0x80026f <Gol_Counter>
+ b36:	84 e5       	ldi	r24, 0x54	; 84
+ b38:	92 e0       	ldi	r25, 0x02	; 2
+ b3a:	0e 94 64 03 	call	0x6c8	; 0x6c8 <Delete_User>
+							UART_VidSendString(Done) ;
+ b3e:	8c e3       	ldi	r24, 0x3C	; 60
+ b40:	91 e0       	ldi	r25, 0x01	; 1
+ b42:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+							UART_VidSendChar('\r') ;
+ b46:	8d e0       	ldi	r24, 0x0D	; 13
+ b48:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+							break;
+ b4c:	08 95       	ret
+							
+							
+		case 'C':			
+							Change_User_Password(UART_PassRx,loc_new_pass);
+ b4e:	61 e6       	ldi	r22, 0x61	; 97
+ b50:	72 e0       	ldi	r23, 0x02	; 2
+ b52:	84 e5       	ldi	r24, 0x54	; 84
+ b54:	92 e0       	ldi	r25, 0x02	; 2
+ b56:	0e 94 2e 03 	call	0x65c	; 0x65c <Change_User_Password>
+							UART_VidSendString(Done) ;
+ b5a:	8c e3       	ldi	r24, 0x3C	; 60
+ b5c:	91 e0       	ldi	r25, 0x01	; 1
+ b5e:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+							UART_VidSendChar('\r') ;
+ b62:	8d e0       	ldi	r24, 0x0D	; 13
+ b64:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+							break;
+ b68:	08 95       	ret
+							
+							
+		case 'Q' :		    UART_VidSendChar('\r') ;
+ b6a:	8d e0       	ldi	r24, 0x0D	; 13
+ b6c:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+							Check_Admin() ;
+ b70:	0e 94 ba 04 	call	0x974	; 0x974 <Check_Admin>
+							break;	
+ b74:	08 95       	ret
+							
+		default :			UART_VidSendString(Invalid_Command) ;
+ b76:	81 e4       	ldi	r24, 0x41	; 65
+ b78:	91 e0       	ldi	r25, 0x01	; 1
+ b7a:	0e 94 6a 07 	call	0xed4	; 0xed4 <UART_VidSendString>
+							UART_VidSendChar('\r') ;		
+ b7e:	8d e0       	ldi	r24, 0x0D	; 13
+ b80:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+ b84:	08 95       	ret
+
+00000b86 <Dio_voidSetpinchmode>:
+
+
+void Dio_voidSetpinchmode(Port_Pin copy_port_pin_num,Port_Mode copy_port_pin_Dir)
+{
+	
+	u8 port_num = copy_port_pin_num/8;
+ b86:	e8 2f       	mov	r30, r24
+ b88:	e6 95       	lsr	r30
+ b8a:	e6 95       	lsr	r30
+ b8c:	e6 95       	lsr	r30
+	u8 pin_num = copy_port_pin_num%8;
+ b8e:	87 70       	andi	r24, 0x07	; 7
+	
+	switch(copy_port_pin_Dir)
+ b90:	61 30       	cpi	r22, 0x01	; 1
+ b92:	39 f0       	breq	.+14     	; 0xba2 <Dio_voidSetpinchmode+0x1c>
+ b94:	e0 f0       	brcs	.+56     	; 0xbce <Dio_voidSetpinchmode+0x48>
+ b96:	62 30       	cpi	r22, 0x02	; 2
+ b98:	e1 f1       	breq	.+120    	; 0xc12 <Dio_voidSetpinchmode+0x8c>
+ b9a:	63 30       	cpi	r22, 0x03	; 3
+ b9c:	09 f4       	brne	.+2      	; 0xba0 <Dio_voidSetpinchmode+0x1a>
+ b9e:	5a c0       	rjmp	.+180    	; 0xc54 <Dio_voidSetpinchmode+0xce>
+ ba0:	08 95       	ret
+	{
+		
+		case INPUT :
+		CLR_BIT(*index_ddrr[port_num],pin_num);
+ ba2:	f0 e0       	ldi	r31, 0x00	; 0
+ ba4:	ee 0f       	add	r30, r30
+ ba6:	ff 1f       	adc	r31, r31
+ ba8:	ea 5c       	subi	r30, 0xCA	; 202
+ baa:	fd 4f       	sbci	r31, 0xFD	; 253
+ bac:	01 90       	ld	r0, Z+
+ bae:	f0 81       	ld	r31, Z
+ bb0:	e0 2d       	mov	r30, r0
+ bb2:	40 81       	ld	r20, Z
+ bb4:	21 e0       	ldi	r18, 0x01	; 1
+ bb6:	30 e0       	ldi	r19, 0x00	; 0
+ bb8:	b9 01       	movw	r22, r18
+ bba:	02 c0       	rjmp	.+4      	; 0xbc0 <Dio_voidSetpinchmode+0x3a>
+ bbc:	66 0f       	add	r22, r22
+ bbe:	77 1f       	adc	r23, r23
+ bc0:	8a 95       	dec	r24
+ bc2:	e2 f7       	brpl	.-8      	; 0xbbc <Dio_voidSetpinchmode+0x36>
+ bc4:	cb 01       	movw	r24, r22
+ bc6:	80 95       	com	r24
+ bc8:	84 23       	and	r24, r20
+ bca:	80 83       	st	Z, r24
+		break;
+ bcc:	08 95       	ret
+		
+		case INPUT_PULLUP :
+		CLR_BIT(*index_ddrr[port_num],pin_num);
+ bce:	2e 2f       	mov	r18, r30
+ bd0:	30 e0       	ldi	r19, 0x00	; 0
+ bd2:	22 0f       	add	r18, r18
+ bd4:	33 1f       	adc	r19, r19
+ bd6:	f9 01       	movw	r30, r18
+ bd8:	ea 5c       	subi	r30, 0xCA	; 202
+ bda:	fd 4f       	sbci	r31, 0xFD	; 253
+ bdc:	01 90       	ld	r0, Z+
+ bde:	f0 81       	ld	r31, Z
+ be0:	e0 2d       	mov	r30, r0
+ be2:	60 81       	ld	r22, Z
+ be4:	41 e0       	ldi	r20, 0x01	; 1
+ be6:	50 e0       	ldi	r21, 0x00	; 0
+ be8:	da 01       	movw	r26, r20
+ bea:	02 c0       	rjmp	.+4      	; 0xbf0 <Dio_voidSetpinchmode+0x6a>
+ bec:	aa 0f       	add	r26, r26
+ bee:	bb 1f       	adc	r27, r27
+ bf0:	8a 95       	dec	r24
+ bf2:	e2 f7       	brpl	.-8      	; 0xbec <Dio_voidSetpinchmode+0x66>
+ bf4:	cd 01       	movw	r24, r26
+ bf6:	9a 2f       	mov	r25, r26
+ bf8:	90 95       	com	r25
+ bfa:	96 23       	and	r25, r22
+ bfc:	90 83       	st	Z, r25
+		// activate the pull-up resistor
+		*index_port[port_num] |= (1<<pin_num);
+ bfe:	f9 01       	movw	r30, r18
+ c00:	e2 5d       	subi	r30, 0xD2	; 210
+ c02:	fd 4f       	sbci	r31, 0xFD	; 253
+ c04:	01 90       	ld	r0, Z+
+ c06:	f0 81       	ld	r31, Z
+ c08:	e0 2d       	mov	r30, r0
+ c0a:	90 81       	ld	r25, Z
+ c0c:	89 2b       	or	r24, r25
+ c0e:	80 83       	st	Z, r24
+		break;
+ c10:	08 95       	ret
+		
+		case OUTPUT_HIGH :
+		SET_BIT(*index_ddrr[port_num],pin_num);
+ c12:	2e 2f       	mov	r18, r30
+ c14:	30 e0       	ldi	r19, 0x00	; 0
+ c16:	22 0f       	add	r18, r18
+ c18:	33 1f       	adc	r19, r19
+ c1a:	f9 01       	movw	r30, r18
+ c1c:	ea 5c       	subi	r30, 0xCA	; 202
+ c1e:	fd 4f       	sbci	r31, 0xFD	; 253
+ c20:	01 90       	ld	r0, Z+
+ c22:	f0 81       	ld	r31, Z
+ c24:	e0 2d       	mov	r30, r0
+ c26:	60 81       	ld	r22, Z
+ c28:	41 e0       	ldi	r20, 0x01	; 1
+ c2a:	50 e0       	ldi	r21, 0x00	; 0
+ c2c:	da 01       	movw	r26, r20
+ c2e:	02 c0       	rjmp	.+4      	; 0xc34 <Dio_voidSetpinchmode+0xae>
+ c30:	aa 0f       	add	r26, r26
+ c32:	bb 1f       	adc	r27, r27
+ c34:	8a 95       	dec	r24
+ c36:	e2 f7       	brpl	.-8      	; 0xc30 <Dio_voidSetpinchmode+0xaa>
+ c38:	cd 01       	movw	r24, r26
+ c3a:	96 2f       	mov	r25, r22
+ c3c:	98 2b       	or	r25, r24
+ c3e:	90 83       	st	Z, r25
+		SET_BIT(*index_port[port_num],pin_num);
+ c40:	f9 01       	movw	r30, r18
+ c42:	e2 5d       	subi	r30, 0xD2	; 210
+ c44:	fd 4f       	sbci	r31, 0xFD	; 253
+ c46:	01 90       	ld	r0, Z+
+ c48:	f0 81       	ld	r31, Z
+ c4a:	e0 2d       	mov	r30, r0
+ c4c:	90 81       	ld	r25, Z
+ c4e:	89 2b       	or	r24, r25
+ c50:	80 83       	st	Z, r24
+		break;
+ c52:	08 95       	ret
+		
+		case OUTPUT_LOW :
+		SET_BIT(*index_ddrr[port_num],pin_num);
+ c54:	f0 e0       	ldi	r31, 0x00	; 0
+ c56:	ee 0f       	add	r30, r30
+ c58:	ff 1f       	adc	r31, r31
+ c5a:	ea 5c       	subi	r30, 0xCA	; 202
+ c5c:	fd 4f       	sbci	r31, 0xFD	; 253
+ c5e:	01 90       	ld	r0, Z+
+ c60:	f0 81       	ld	r31, Z
+ c62:	e0 2d       	mov	r30, r0
+ c64:	40 81       	ld	r20, Z
+ c66:	21 e0       	ldi	r18, 0x01	; 1
+ c68:	30 e0       	ldi	r19, 0x00	; 0
+ c6a:	b9 01       	movw	r22, r18
+ c6c:	02 c0       	rjmp	.+4      	; 0xc72 <Dio_voidSetpinchmode+0xec>
+ c6e:	66 0f       	add	r22, r22
+ c70:	77 1f       	adc	r23, r23
+ c72:	8a 95       	dec	r24
+ c74:	e2 f7       	brpl	.-8      	; 0xc6e <Dio_voidSetpinchmode+0xe8>
+ c76:	cb 01       	movw	r24, r22
+ c78:	84 2b       	or	r24, r20
+ c7a:	80 83       	st	Z, r24
+ c7c:	08 95       	ret
+
+00000c7e <Dio_voidWritepinchannel>:
+}
+
+void Dio_voidWritepinchannel(Port_Pin copy_port_pin_num,u8 copy_value)
+{
+	
+	u8 port_num = copy_port_pin_num/8;
+ c7e:	e8 2f       	mov	r30, r24
+ c80:	e6 95       	lsr	r30
+ c82:	e6 95       	lsr	r30
+ c84:	e6 95       	lsr	r30
+	u8 pin_num = copy_port_pin_num%8;
+ c86:	87 70       	andi	r24, 0x07	; 7
+		if(copy_value==PIN_HIGH)
+ c88:	61 30       	cpi	r22, 0x01	; 1
+ c8a:	a9 f4       	brne	.+42     	; 0xcb6 <Dio_voidWritepinchannel+0x38>
+		{
+			SET_BIT(*index_port[port_num],pin_num);
+ c8c:	f0 e0       	ldi	r31, 0x00	; 0
+ c8e:	ee 0f       	add	r30, r30
+ c90:	ff 1f       	adc	r31, r31
+ c92:	e2 5d       	subi	r30, 0xD2	; 210
+ c94:	fd 4f       	sbci	r31, 0xFD	; 253
+ c96:	01 90       	ld	r0, Z+
+ c98:	f0 81       	ld	r31, Z
+ c9a:	e0 2d       	mov	r30, r0
+ c9c:	40 81       	ld	r20, Z
+ c9e:	21 e0       	ldi	r18, 0x01	; 1
+ ca0:	30 e0       	ldi	r19, 0x00	; 0
+ ca2:	b9 01       	movw	r22, r18
+ ca4:	02 c0       	rjmp	.+4      	; 0xcaa <Dio_voidWritepinchannel+0x2c>
+ ca6:	66 0f       	add	r22, r22
+ ca8:	77 1f       	adc	r23, r23
+ caa:	8a 95       	dec	r24
+ cac:	e2 f7       	brpl	.-8      	; 0xca6 <Dio_voidWritepinchannel+0x28>
+ cae:	cb 01       	movw	r24, r22
+ cb0:	84 2b       	or	r24, r20
+ cb2:	80 83       	st	Z, r24
+ cb4:	08 95       	ret
+		}
+		else
+		{
+			CLR_BIT(*index_port[port_num],pin_num);
+ cb6:	f0 e0       	ldi	r31, 0x00	; 0
+ cb8:	ee 0f       	add	r30, r30
+ cba:	ff 1f       	adc	r31, r31
+ cbc:	e2 5d       	subi	r30, 0xD2	; 210
+ cbe:	fd 4f       	sbci	r31, 0xFD	; 253
+ cc0:	01 90       	ld	r0, Z+
+ cc2:	f0 81       	ld	r31, Z
+ cc4:	e0 2d       	mov	r30, r0
+ cc6:	40 81       	ld	r20, Z
+ cc8:	21 e0       	ldi	r18, 0x01	; 1
+ cca:	30 e0       	ldi	r19, 0x00	; 0
+ ccc:	b9 01       	movw	r22, r18
+ cce:	02 c0       	rjmp	.+4      	; 0xcd4 <Dio_voidWritepinchannel+0x56>
+ cd0:	66 0f       	add	r22, r22
+ cd2:	77 1f       	adc	r23, r23
+ cd4:	8a 95       	dec	r24
+ cd6:	e2 f7       	brpl	.-8      	; 0xcd0 <Dio_voidWritepinchannel+0x52>
+ cd8:	cb 01       	movw	r24, r22
+ cda:	80 95       	com	r24
+ cdc:	84 23       	and	r24, r20
+ cde:	80 83       	st	Z, r24
+ ce0:	08 95       	ret
+
+00000ce2 <Dio_voidReadpinchannel>:
+}	
+		
+void Dio_voidReadpinchannel(Port_Pin copy_port_pin_num,u8 * copy_value)
+{
+	
+	u8 port_num = copy_port_pin_num/8;
+ ce2:	e8 2f       	mov	r30, r24
+ ce4:	e6 95       	lsr	r30
+ ce6:	e6 95       	lsr	r30
+ ce8:	e6 95       	lsr	r30
+	u8 pin_num = copy_port_pin_num%8;
+ cea:	28 2f       	mov	r18, r24
+ cec:	27 70       	andi	r18, 0x07	; 7
+	
+		*copy_value = GET_BIT(*index_pin[port_num],pin_num);
+ cee:	f0 e0       	ldi	r31, 0x00	; 0
+ cf0:	ee 0f       	add	r30, r30
+ cf2:	ff 1f       	adc	r31, r31
+ cf4:	ea 5d       	subi	r30, 0xDA	; 218
+ cf6:	fd 4f       	sbci	r31, 0xFD	; 253
+ cf8:	01 90       	ld	r0, Z+
+ cfa:	f0 81       	ld	r31, Z
+ cfc:	e0 2d       	mov	r30, r0
+ cfe:	90 81       	ld	r25, Z
+ d00:	89 2f       	mov	r24, r25
+ d02:	90 e0       	ldi	r25, 0x00	; 0
+ d04:	02 c0       	rjmp	.+4      	; 0xd0a <Dio_voidReadpinchannel+0x28>
+ d06:	95 95       	asr	r25
+ d08:	87 95       	ror	r24
+ d0a:	2a 95       	dec	r18
+ d0c:	e2 f7       	brpl	.-8      	; 0xd06 <Dio_voidReadpinchannel+0x24>
+ d0e:	81 70       	andi	r24, 0x01	; 1
+ d10:	fb 01       	movw	r30, r22
+ d12:	80 83       	st	Z, r24
+ d14:	08 95       	ret
+
+00000d16 <SPI_voidInialize>:
+u8 SPI_u8Receiver(void)
+{
+		while(GET_BIT(SPSR,7)==0);
+		return SPDR ;
+	
+}
+ d16:	8d b1       	in	r24, 0x0d	; 13
+ d18:	8f 77       	andi	r24, 0x7F	; 127
+ d1a:	8d b9       	out	0x0d, r24	; 13
+ d1c:	8d b1       	in	r24, 0x0d	; 13
+ d1e:	80 62       	ori	r24, 0x20	; 32
+ d20:	8d b9       	out	0x0d, r24	; 13
+ d22:	8d b1       	in	r24, 0x0d	; 13
+ d24:	80 61       	ori	r24, 0x10	; 16
+ d26:	8d b9       	out	0x0d, r24	; 13
+ d28:	8d b1       	in	r24, 0x0d	; 13
+ d2a:	87 7f       	andi	r24, 0xF7	; 247
+ d2c:	8d b9       	out	0x0d, r24	; 13
+ d2e:	8d b1       	in	r24, 0x0d	; 13
+ d30:	84 60       	ori	r24, 0x04	; 4
+ d32:	8d b9       	out	0x0d, r24	; 13
+ d34:	8d b1       	in	r24, 0x0d	; 13
+ d36:	8e 7f       	andi	r24, 0xFE	; 254
+ d38:	8d b9       	out	0x0d, r24	; 13
+ d3a:	8d b1       	in	r24, 0x0d	; 13
+ d3c:	82 60       	ori	r24, 0x02	; 2
+ d3e:	8d b9       	out	0x0d, r24	; 13
+ d40:	8e b1       	in	r24, 0x0e	; 14
+ d42:	8e 7f       	andi	r24, 0xFE	; 254
+ d44:	8e b9       	out	0x0e, r24	; 14
+ d46:	8d b1       	in	r24, 0x0d	; 13
+ d48:	80 64       	ori	r24, 0x40	; 64
+ d4a:	8d b9       	out	0x0d, r24	; 13
+ d4c:	08 95       	ret
+
+00000d4e <SPI_voidTransmiter>:
+ d4e:	8f b9       	out	0x0f, r24	; 15
+ d50:	77 9b       	sbis	0x0e, 7	; 14
+ d52:	fe cf       	rjmp	.-4      	; 0xd50 <SPI_voidTransmiter+0x2>
+ d54:	08 95       	ret
+
+00000d56 <__vector_12>:
+
+///////////////////////////////////////////////////////////////
+
+void __vector_12()__attribute__((signal));
+void __vector_12()
+{
+ d56:	1f 92       	push	r1
+ d58:	0f 92       	push	r0
+ d5a:	0f b6       	in	r0, 0x3f	; 63
+ d5c:	0f 92       	push	r0
+ d5e:	11 24       	eor	r1, r1
+ d60:	2f 93       	push	r18
+ d62:	3f 93       	push	r19
+ d64:	4f 93       	push	r20
+ d66:	5f 93       	push	r21
+ d68:	6f 93       	push	r22
+ d6a:	7f 93       	push	r23
+ d6c:	8f 93       	push	r24
+ d6e:	9f 93       	push	r25
+ d70:	af 93       	push	r26
+ d72:	bf 93       	push	r27
+ d74:	ef 93       	push	r30
+ d76:	ff 93       	push	r31
+	SPI_GPTR();
+ d78:	e0 91 72 02 	lds	r30, 0x0272	; 0x800272 <SPI_GPTR>
+ d7c:	f0 91 73 02 	lds	r31, 0x0273	; 0x800273 <SPI_GPTR+0x1>
+ d80:	09 95       	icall
+
+}
+ d82:	ff 91       	pop	r31
+ d84:	ef 91       	pop	r30
+ d86:	bf 91       	pop	r27
+ d88:	af 91       	pop	r26
+ d8a:	9f 91       	pop	r25
+ d8c:	8f 91       	pop	r24
+ d8e:	7f 91       	pop	r23
+ d90:	6f 91       	pop	r22
+ d92:	5f 91       	pop	r21
+ d94:	4f 91       	pop	r20
+ d96:	3f 91       	pop	r19
+ d98:	2f 91       	pop	r18
+ d9a:	0f 90       	pop	r0
+ d9c:	0f be       	out	0x3f, r0	; 63
+ d9e:	0f 90       	pop	r0
+ da0:	1f 90       	pop	r1
+ da2:	18 95       	reti
+
+00000da4 <TWI_voidInitMaster>:
+void TWI_voidInitMaster (u8 Copy_u8Adress) 
+
+{
+	/* In Case you don't want to write Address to 
+	the slave write any Number to Break If Condition */ 
+	if (Copy_u8Adress < 128)
+ da4:	88 23       	and	r24, r24
+ da6:	14 f0       	brlt	.+4      	; 0xdac <TWI_voidInitMaster+0x8>
+	{
+		TWAR = Copy_u8Adress<<1 ;
+ da8:	88 0f       	add	r24, r24
+ daa:	82 b9       	out	0x02, r24	; 2
+	}
+	
+	/* CLK = 400KHZ "Max Clock In AVR " */ 
+	/* Pre_Scaler Bits "00" */
+	CLR_BIT(TWSR,TWPS0);
+ dac:	81 b1       	in	r24, 0x01	; 1
+ dae:	8e 7f       	andi	r24, 0xFE	; 254
+ db0:	81 b9       	out	0x01, r24	; 1
+	CLR_BIT(TWSR,TWPS1);
+ db2:	81 b1       	in	r24, 0x01	; 1
+ db4:	8d 7f       	andi	r24, 0xFD	; 253
+ db6:	81 b9       	out	0x01, r24	; 1
+	TWBR = TWBR_VALUE ;
+ db8:	8c e0       	ldi	r24, 0x0C	; 12
+ dba:	80 b9       	out	0x00, r24	; 0
+	
+	//Enable ACK 
+	SET_BIT(TWCR,TWEA) ;
+ dbc:	86 b7       	in	r24, 0x36	; 54
+ dbe:	80 64       	ori	r24, 0x40	; 64
+ dc0:	86 bf       	out	0x36, r24	; 54
+	
+	//Enable TWI 
+	SET_BIT(TWCR,TWEN);	
+ dc2:	86 b7       	in	r24, 0x36	; 54
+ dc4:	84 60       	ori	r24, 0x04	; 4
+ dc6:	86 bf       	out	0x36, r24	; 54
+ dc8:	08 95       	ret
+
+00000dca <TWI_voidStartCondition>:
+
+/* If You Called this Function then this Node is Master */ 
+void TWI_voidStartCondition (void) 
+{
+	//Request Start Condition 
+	SET_BIT(TWCR,TWSTA);
+ dca:	86 b7       	in	r24, 0x36	; 54
+ dcc:	80 62       	ori	r24, 0x20	; 32
+ dce:	86 bf       	out	0x36, r24	; 54
+	//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+	SET_BIT(TWCR,TWINT);
+ dd0:	86 b7       	in	r24, 0x36	; 54
+ dd2:	80 68       	ori	r24, 0x80	; 128
+ dd4:	86 bf       	out	0x36, r24	; 54
+	//Polling on the flag to make sure the Start Condition is Sent 
+	while (GET_BIT(TWCR,TWINT) == 0) ;
+ dd6:	06 b6       	in	r0, 0x36	; 54
+ dd8:	07 fe       	sbrs	r0, 7
+ dda:	fd cf       	rjmp	.-6      	; 0xdd6 <TWI_voidStartCondition+0xc>
+	//To Make Sure That Start Condition Is Sent Correctly 
+	while ( (TWI_STATUS_VALUE) != (TWI_START_CONDTION_ACK)) ;
+ ddc:	81 b1       	in	r24, 0x01	; 1
+ dde:	88 7f       	andi	r24, 0xF8	; 248
+ de0:	88 30       	cpi	r24, 0x08	; 8
+ de2:	e1 f7       	brne	.-8      	; 0xddc <TWI_voidStartCondition+0x12>
+}
+ de4:	08 95       	ret
+
+00000de6 <TWI_voidRepeatedStartCondition>:
+
+
+void TWI_voidRepeatedStartCondition (void) 
+{
+	//Request Start Condition
+	SET_BIT(TWCR,TWSTA);
+ de6:	86 b7       	in	r24, 0x36	; 54
+ de8:	80 62       	ori	r24, 0x20	; 32
+ dea:	86 bf       	out	0x36, r24	; 54
+	//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+	SET_BIT(TWCR,TWINT);
+ dec:	86 b7       	in	r24, 0x36	; 54
+ dee:	80 68       	ori	r24, 0x80	; 128
+ df0:	86 bf       	out	0x36, r24	; 54
+	//Polling on the flag to make sure the Start Condition is Sent
+	while (GET_BIT(TWCR,TWINT) == 0) ;
+ df2:	06 b6       	in	r0, 0x36	; 54
+ df4:	07 fe       	sbrs	r0, 7
+ df6:	fd cf       	rjmp	.-6      	; 0xdf2 <TWI_voidRepeatedStartCondition+0xc>
+	//To Make Sure That Start Condition Is Sent Correctly
+	while ( (TWI_STATUS_VALUE) != (TWI_REP_START_CONDTION_ACK)) ;
+ df8:	81 b1       	in	r24, 0x01	; 1
+ dfa:	88 7f       	andi	r24, 0xF8	; 248
+ dfc:	80 31       	cpi	r24, 0x10	; 16
+ dfe:	e1 f7       	brne	.-8      	; 0xdf8 <TWI_voidRepeatedStartCondition+0x12>
+	
+}
+ e00:	08 95       	ret
+
+00000e02 <TWI_voidStopCondition>:
+
+
+void TWI_voidStopCondition (void) 
+{
+	//Request Stop Condition
+	SET_BIT(TWCR,TWSTO);
+ e02:	86 b7       	in	r24, 0x36	; 54
+ e04:	80 61       	ori	r24, 0x10	; 16
+ e06:	86 bf       	out	0x36, r24	; 54
+	//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+	SET_BIT(TWCR,TWINT);
+ e08:	86 b7       	in	r24, 0x36	; 54
+ e0a:	80 68       	ori	r24, 0x80	; 128
+ e0c:	86 bf       	out	0x36, r24	; 54
+ e0e:	08 95       	ret
+
+00000e10 <TWI_voidSendSlaveAdressWithWrite>:
+
+
+void TWI_voidSendSlaveAdressWithWrite (u8 Copy_u8SlaveAdress) 
+{
+	
+	if (Copy_u8SlaveAdress < 128)
+ e10:	88 23       	and	r24, r24
+ e12:	94 f0       	brlt	.+36     	; 0xe38 <TWI_voidSendSlaveAdressWithWrite+0x28>
+	{
+		// Slave I want to Contact With 
+		TWDR = Copy_u8SlaveAdress << 1 ;
+ e14:	88 0f       	add	r24, r24
+ e16:	83 b9       	out	0x03, r24	; 3
+		// Select Write Operation  
+		CLR_BIT(TWDR,0) ;
+ e18:	83 b1       	in	r24, 0x03	; 3
+ e1a:	8e 7f       	andi	r24, 0xFE	; 254
+ e1c:	83 b9       	out	0x03, r24	; 3
+		//Clear Start Condition
+		CLR_BIT(TWCR,TWSTA) ;
+ e1e:	86 b7       	in	r24, 0x36	; 54
+ e20:	8f 7d       	andi	r24, 0xDF	; 223
+ e22:	86 bf       	out	0x36, r24	; 54
+		//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+		SET_BIT(TWCR,TWINT);
+ e24:	86 b7       	in	r24, 0x36	; 54
+ e26:	80 68       	ori	r24, 0x80	; 128
+ e28:	86 bf       	out	0x36, r24	; 54
+		//Polling on the flag to make sure Slave Address is Sent
+		while (GET_BIT(TWCR,TWINT) == 0) ;
+ e2a:	06 b6       	in	r0, 0x36	; 54
+ e2c:	07 fe       	sbrs	r0, 7
+ e2e:	fd cf       	rjmp	.-6      	; 0xe2a <TWI_voidSendSlaveAdressWithWrite+0x1a>
+		//To Make Sure That Slave Address Is Sent Correctly
+		while ( (TWI_STATUS_VALUE) != (TWI_SLAVE_ADRESS_WRITE_ACK) ) ;
+ e30:	81 b1       	in	r24, 0x01	; 1
+ e32:	88 7f       	andi	r24, 0xF8	; 248
+ e34:	88 31       	cpi	r24, 0x18	; 24
+ e36:	e1 f7       	brne	.-8      	; 0xe30 <TWI_voidSendSlaveAdressWithWrite+0x20>
+ e38:	08 95       	ret
+
+00000e3a <TWI_voidSendSlaveAdressWithRead>:
+
+void TWI_voidSendSlaveAdressWithRead(u8 Copy_u8SlaveAdress) 
+{
+	
+	
+	if (Copy_u8SlaveAdress < 128)
+ e3a:	88 23       	and	r24, r24
+ e3c:	94 f0       	brlt	.+36     	; 0xe62 <TWI_voidSendSlaveAdressWithRead+0x28>
+	{
+		// Slave I want to Contact With
+		TWDR = Copy_u8SlaveAdress << 1 ;
+ e3e:	88 0f       	add	r24, r24
+ e40:	83 b9       	out	0x03, r24	; 3
+		// Select Read Operation
+		SET_BIT(TWDR,0) ;
+ e42:	83 b1       	in	r24, 0x03	; 3
+ e44:	81 60       	ori	r24, 0x01	; 1
+ e46:	83 b9       	out	0x03, r24	; 3
+		//Clear Start Condition
+		CLR_BIT(TWCR,TWSTA) ;
+ e48:	86 b7       	in	r24, 0x36	; 54
+ e4a:	8f 7d       	andi	r24, 0xDF	; 223
+ e4c:	86 bf       	out	0x36, r24	; 54
+		//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+		SET_BIT(TWCR,TWINT);
+ e4e:	86 b7       	in	r24, 0x36	; 54
+ e50:	80 68       	ori	r24, 0x80	; 128
+ e52:	86 bf       	out	0x36, r24	; 54
+		//Polling on the flag to make sure the Slave Address is Sent
+		while (GET_BIT(TWCR,TWINT) == 0) ;
+ e54:	06 b6       	in	r0, 0x36	; 54
+ e56:	07 fe       	sbrs	r0, 7
+ e58:	fd cf       	rjmp	.-6      	; 0xe54 <TWI_voidSendSlaveAdressWithRead+0x1a>
+		//To Make Sure That Slave Address Is Sent Correctly
+		while ( (TWI_STATUS_VALUE) != (TWI_SLAVE_ADRESS_READ_ACK) ) ;
+ e5a:	81 b1       	in	r24, 0x01	; 1
+ e5c:	88 7f       	andi	r24, 0xF8	; 248
+ e5e:	80 34       	cpi	r24, 0x40	; 64
+ e60:	e1 f7       	brne	.-8      	; 0xe5a <TWI_voidSendSlaveAdressWithRead+0x20>
+ e62:	08 95       	ret
+
+00000e64 <TWI_voidSendMasterDataByte>:
+
+
+void TWI_voidSendMasterDataByte (u8 Copy_u8TxData) 
+{
+	// Load Data on the Register 
+	TWDR = 	Copy_u8TxData ;
+ e64:	83 b9       	out	0x03, r24	; 3
+	//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+	SET_BIT(TWCR,TWINT);
+ e66:	86 b7       	in	r24, 0x36	; 54
+ e68:	80 68       	ori	r24, 0x80	; 128
+ e6a:	86 bf       	out	0x36, r24	; 54
+	//Polling on the flag to make sure the Data Sent Completely 
+	while (GET_BIT(TWCR,TWINT) == 0) ;
+ e6c:	06 b6       	in	r0, 0x36	; 54
+ e6e:	07 fe       	sbrs	r0, 7
+ e70:	fd cf       	rjmp	.-6      	; 0xe6c <TWI_voidSendMasterDataByte+0x8>
+	//To Make Sure That Master Send Data Correctly 
+	while ( (TWI_STATUS_VALUE) != (TWI_MASTER_SEND_DATA_ACK) ) ;
+ e72:	81 b1       	in	r24, 0x01	; 1
+ e74:	88 7f       	andi	r24, 0xF8	; 248
+ e76:	88 32       	cpi	r24, 0x28	; 40
+ e78:	e1 f7       	brne	.-8      	; 0xe72 <TWI_voidSendMasterDataByte+0xe>
+	
+}
+ e7a:	08 95       	ret
+
+00000e7c <TWI_voidReceiveMasterDataByte>:
+
+
+u8 TWI_voidReceiveMasterDataByte (void) 
+{
+	//Clear Flag "If not the Clock will be Zero " "Write 1 To Clear "
+	SET_BIT(TWCR,TWINT);
+ e7c:	86 b7       	in	r24, 0x36	; 54
+ e7e:	80 68       	ori	r24, 0x80	; 128
+ e80:	86 bf       	out	0x36, r24	; 54
+	//Polling on the flag to make sure the Data Rx Completely 
+	while (GET_BIT(TWCR,TWINT) == 0) ;
+ e82:	06 b6       	in	r0, 0x36	; 54
+ e84:	07 fe       	sbrs	r0, 7
+ e86:	fd cf       	rjmp	.-6      	; 0xe82 <TWI_voidReceiveMasterDataByte+0x6>
+	//To Make Sure That Master Receive Data Correctly 
+	//while ((TWI_STATUS_VALUE) != (TWI_MASTER_RX_DATA_ACK) ) ;
+	
+	//Return the Data 
+	return TWDR ;
+ e88:	83 b1       	in	r24, 0x03	; 3
+	
+}
+ e8a:	08 95       	ret
+
+00000e8c <TWI_voidReadACK>:
+
+
+void TWI_voidReadACK ()
+{
+	
+	SET_BIT(TWCR,TWEA);
+ e8c:	86 b7       	in	r24, 0x36	; 54
+ e8e:	80 64       	ori	r24, 0x40	; 64
+ e90:	86 bf       	out	0x36, r24	; 54
+ e92:	08 95       	ret
+
+00000e94 <TWI_voidReadNONACK>:
+}
+
+void TWI_voidReadNONACK ()
+{
+	
+	CLR_BIT(TWCR,TWEA);
+ e94:	86 b7       	in	r24, 0x36	; 54
+ e96:	8f 7b       	andi	r24, 0xBF	; 191
+ e98:	86 bf       	out	0x36, r24	; 54
+ e9a:	08 95       	ret
+
+00000e9c <UART_VidInit>:
+	 UART_CallBack=Copy_VidCallBack;
+ }
+ 
+ void UATR_VidTX_SetCallBack(void(*Copy_VidCallBack)(void))
+ {
+	 UART_CallBack=Copy_VidCallBack;
+ e9c:	8a b1       	in	r24, 0x0a	; 10
+ e9e:	8b 7f       	andi	r24, 0xFB	; 251
+ ea0:	8a b9       	out	0x0a, r24	; 10
+ ea2:	8a b1       	in	r24, 0x0a	; 10
+ ea4:	8f 77       	andi	r24, 0x7F	; 127
+ ea6:	8a b9       	out	0x0a, r24	; 10
+ ea8:	8a b1       	in	r24, 0x0a	; 10
+ eaa:	8f 7b       	andi	r24, 0xBF	; 191
+ eac:	8a b9       	out	0x0a, r24	; 10
+ eae:	86 e8       	ldi	r24, 0x86	; 134
+ eb0:	80 bd       	out	0x20, r24	; 32
+ eb2:	87 e6       	ldi	r24, 0x67	; 103
+ eb4:	89 b9       	out	0x09, r24	; 9
+ eb6:	8a b1       	in	r24, 0x0a	; 10
+ eb8:	80 61       	ori	r24, 0x10	; 16
+ eba:	8a b9       	out	0x0a, r24	; 10
+ ebc:	8a b1       	in	r24, 0x0a	; 10
+ ebe:	88 60       	ori	r24, 0x08	; 8
+ ec0:	8a b9       	out	0x0a, r24	; 10
+ ec2:	08 95       	ret
+
+00000ec4 <UART_VidSendChar>:
+ ec4:	5d 9b       	sbis	0x0b, 5	; 11
+ ec6:	fe cf       	rjmp	.-4      	; 0xec4 <UART_VidSendChar>
+ ec8:	8c b9       	out	0x0c, r24	; 12
+ eca:	08 95       	ret
+
+00000ecc <UART_u8ReceiveData>:
+ ecc:	5f 9b       	sbis	0x0b, 7	; 11
+ ece:	fe cf       	rjmp	.-4      	; 0xecc <UART_u8ReceiveData>
+ ed0:	8c b1       	in	r24, 0x0c	; 12
+ ed2:	08 95       	ret
+
+00000ed4 <UART_VidSendString>:
+ ed4:	0f 93       	push	r16
+ ed6:	1f 93       	push	r17
+ ed8:	cf 93       	push	r28
+ eda:	8c 01       	movw	r16, r24
+ edc:	c0 e0       	ldi	r28, 0x00	; 0
+ ede:	03 c0       	rjmp	.+6      	; 0xee6 <UART_VidSendString+0x12>
+ ee0:	0e 94 62 07 	call	0xec4	; 0xec4 <UART_VidSendChar>
+ ee4:	cf 5f       	subi	r28, 0xFF	; 255
+ ee6:	f8 01       	movw	r30, r16
+ ee8:	ec 0f       	add	r30, r28
+ eea:	f1 1d       	adc	r31, r1
+ eec:	80 81       	ld	r24, Z
+ eee:	81 11       	cpse	r24, r1
+ ef0:	f7 cf       	rjmp	.-18     	; 0xee0 <UART_VidSendString+0xc>
+ ef2:	cf 91       	pop	r28
+ ef4:	1f 91       	pop	r17
+ ef6:	0f 91       	pop	r16
+ ef8:	08 95       	ret
+
+00000efa <UART_VidReceiveString>:
+ efa:	ef 92       	push	r14
+ efc:	ff 92       	push	r15
+ efe:	0f 93       	push	r16
+ f00:	1f 93       	push	r17
+ f02:	cf 93       	push	r28
+ f04:	8c 01       	movw	r16, r24
+ f06:	c0 e0       	ldi	r28, 0x00	; 0
+ f08:	78 01       	movw	r14, r16
+ f0a:	ec 0e       	add	r14, r28
+ f0c:	f1 1c       	adc	r15, r1
+ f0e:	0e 94 66 07 	call	0xecc	; 0xecc <UART_u8ReceiveData>
+ f12:	f7 01       	movw	r30, r14
+ f14:	80 83       	st	Z, r24
+ f16:	cf 5f       	subi	r28, 0xFF	; 255
+ f18:	f8 01       	movw	r30, r16
+ f1a:	ec 0f       	add	r30, r28
+ f1c:	f1 1d       	adc	r31, r1
+ f1e:	31 97       	sbiw	r30, 0x01	; 1
+ f20:	80 81       	ld	r24, Z
+ f22:	8d 32       	cpi	r24, 0x2D	; 45
+ f24:	89 f7       	brne	.-30     	; 0xf08 <UART_VidReceiveString+0xe>
+ f26:	8c 2f       	mov	r24, r28
+ f28:	cf 91       	pop	r28
+ f2a:	1f 91       	pop	r17
+ f2c:	0f 91       	pop	r16
+ f2e:	ff 90       	pop	r15
+ f30:	ef 90       	pop	r14
+ f32:	08 95       	ret
+
+00000f34 <__vector_13>:
+ }
+ 
+ void ISR_UART_TXc(void)   __attribute__((signal));
+ void ISR_UART_TXc(void)
+ {
+ f34:	1f 92       	push	r1
+ f36:	0f 92       	push	r0
+ f38:	0f b6       	in	r0, 0x3f	; 63
+ f3a:	0f 92       	push	r0
+ f3c:	11 24       	eor	r1, r1
+ f3e:	2f 93       	push	r18
+ f40:	3f 93       	push	r19
+ f42:	4f 93       	push	r20
+ f44:	5f 93       	push	r21
+ f46:	6f 93       	push	r22
+ f48:	7f 93       	push	r23
+ f4a:	8f 93       	push	r24
+ f4c:	9f 93       	push	r25
+ f4e:	af 93       	push	r26
+ f50:	bf 93       	push	r27
+ f52:	ef 93       	push	r30
+ f54:	ff 93       	push	r31
+	 UART_CallBack();
+ f56:	e0 91 74 02 	lds	r30, 0x0274	; 0x800274 <UART_CallBack>
+ f5a:	f0 91 75 02 	lds	r31, 0x0275	; 0x800275 <UART_CallBack+0x1>
+ f5e:	09 95       	icall
+ }
+ f60:	ff 91       	pop	r31
+ f62:	ef 91       	pop	r30
+ f64:	bf 91       	pop	r27
+ f66:	af 91       	pop	r26
+ f68:	9f 91       	pop	r25
+ f6a:	8f 91       	pop	r24
+ f6c:	7f 91       	pop	r23
+ f6e:	6f 91       	pop	r22
+ f70:	5f 91       	pop	r21
+ f72:	4f 91       	pop	r20
+ f74:	3f 91       	pop	r19
+ f76:	2f 91       	pop	r18
+ f78:	0f 90       	pop	r0
+ f7a:	0f be       	out	0x3f, r0	; 63
+ f7c:	0f 90       	pop	r0
+ f7e:	1f 90       	pop	r1
+ f80:	18 95       	reti
+
+00000f82 <__vector_15>:
+ 
+  void __vector_15(void)   __attribute__((signal));
+  void __vector_15(void)
+  {
+ f82:	1f 92       	push	r1
+ f84:	0f 92       	push	r0
+ f86:	0f b6       	in	r0, 0x3f	; 63
+ f88:	0f 92       	push	r0
+ f8a:	11 24       	eor	r1, r1
+ f8c:	2f 93       	push	r18
+ f8e:	3f 93       	push	r19
+ f90:	4f 93       	push	r20
+ f92:	5f 93       	push	r21
+ f94:	6f 93       	push	r22
+ f96:	7f 93       	push	r23
+ f98:	8f 93       	push	r24
+ f9a:	9f 93       	push	r25
+ f9c:	af 93       	push	r26
+ f9e:	bf 93       	push	r27
+ fa0:	ef 93       	push	r30
+ fa2:	ff 93       	push	r31
+	  UART_CallBack();
+ fa4:	e0 91 74 02 	lds	r30, 0x0274	; 0x800274 <UART_CallBack>
+ fa8:	f0 91 75 02 	lds	r31, 0x0275	; 0x800275 <UART_CallBack+0x1>
+ fac:	09 95       	icall
+ fae:	ff 91       	pop	r31
+ fb0:	ef 91       	pop	r30
+ fb2:	bf 91       	pop	r27
+ fb4:	af 91       	pop	r26
+ fb6:	9f 91       	pop	r25
+ fb8:	8f 91       	pop	r24
+ fba:	7f 91       	pop	r23
+ fbc:	6f 91       	pop	r22
+ fbe:	5f 91       	pop	r21
+ fc0:	4f 91       	pop	r20
+ fc2:	3f 91       	pop	r19
+ fc4:	2f 91       	pop	r18
+ fc6:	0f 90       	pop	r0
+ fc8:	0f be       	out	0x3f, r0	; 63
+ fca:	0f 90       	pop	r0
+ fcc:	1f 90       	pop	r1
+ fce:	18 95       	reti
+
+00000fd0 <_exit>:
+ fd0:	f8 94       	cli
+
+00000fd2 <__stop_program>:
+ fd2:	ff cf       	rjmp	.-2      	; 0xfd2 <__stop_program>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="micro2.elf">                 
+    <memory name="program">              
+      <units>bytes</units>                 
+      <length>32768</length>                 
+      <used>5935</used>                     
+      <free>26833</free>                     
+    </memory>                              
+    <memory name="data">                 
+      <units>bytes</units>                 
+      <length>2048</length>                 
+      <used>1121</used>                     
+      <free>927</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 
