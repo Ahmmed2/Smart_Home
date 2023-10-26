@@ -1,5 +1,5 @@
 # Smart_Home
-## This project is on Atmega32.   
+## This project based on Atmega32.   
 ### System have two modes the first is Admin mode which have full acess on everything and he is higher priority than the user.   
 ### Second mode is User mode, Lower priority mode which have Control over the home through User-Interface.    
 ## How the system works ?
